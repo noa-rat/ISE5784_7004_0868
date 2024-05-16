@@ -4,7 +4,7 @@ import primitives.Point;
 import primitives.Vector;
 
 public class Sphere extends RadialGeometry{
-    private Point center;
+    private final Point center;
 
     /**
      *
@@ -18,6 +18,6 @@ public class Sphere extends RadialGeometry{
 
     @Override
     public Vector getNormal(Point point) {
-        return null;
+        return (point.subtract(center)).normalize();
     }
 }

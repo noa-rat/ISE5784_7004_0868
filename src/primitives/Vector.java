@@ -27,7 +27,9 @@ public class Vector extends Point{
 
     @Override
     public boolean equals(Object o) {
-        return super.equals(o);
+        if (this == o) return true;
+        return (o instanceof Vector other)
+                && super.equals(other);
     }
 
     @Override
@@ -37,7 +39,7 @@ public class Vector extends Point{
 
     @Override
     public String toString() {
-        return super.toString();
+        return "->" + super.toString();
     }
 
     /**

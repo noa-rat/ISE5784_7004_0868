@@ -3,8 +3,8 @@ package primitives;
 import java.util.Objects;
 
 public class Ray {
-    private Point head;
-    private Vector direction;
+    private final Point head;
+    private final Vector direction;
 
     /**
      *
@@ -35,5 +35,13 @@ public class Ray {
                 "head=" + head +
                 ", direction=" + direction +
                 '}';
+    }
+
+    public Point getHead() {
+        return head;
+    }
+
+    public Vector getDirection() {
+        return direction;
     }
 }

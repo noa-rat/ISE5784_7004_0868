@@ -4,8 +4,10 @@ import primitives.Point;
 import primitives.Ray;
 import primitives.Vector;
 
+import static primitives.Util.isZero;
+
 public class Cylinder extends Tube{
-    private double height;
+    private final double height;
 
     /**
      *
@@ -20,7 +22,14 @@ public class Cylinder extends Tube{
 
     @Override
     public Vector getNormal(Point point) {
-        super.getNormal(point);
-        return null;
+        // t -> scalar to to calculate
+        double t = (axis.getDirection()).dotProduct(point.subtract(axis.getHead()));
+        // Treatment of the edge case where the point is on the base
+        if(isZero(t))
+            return axis.getDirection();
+        // o -> the center of the circle on the tube
+        Point o = (axis.getHead()).add((axis.getDirection()).scale(t));
+        // normal calculate to the circle
+        return (point.subtract(o)).normalize();
     }
 }

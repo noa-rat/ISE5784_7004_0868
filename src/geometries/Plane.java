@@ -25,12 +25,12 @@ public class Plane implements Geometry{
      */
     public Plane(Point x, Point y, Point z) {
         q = x;
-        normal = null;
+        normal = (y.subtract(x).crossProduct(z.subtract(x))).normalize();
     }
 
     @Override
     public Vector getNormal(Point point) {
-        return normal;
+        return getNormal();
     }
 
     /**
