@@ -43,7 +43,7 @@ public class PointTest {
                 "ERROR: (point2 - point1) does not work correctly");
 
         // =============== Boundary Values Tests ==================
-        assertEquals(new Vector(Double3.ZERO), p1.subtract(p1),
+        assertThrows(IllegalArgumentException.class,()-> p1.subtract(p1),
                 "ERROR: (point2 - point1) does not work correctly");
     }
 
