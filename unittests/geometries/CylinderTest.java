@@ -7,8 +7,15 @@ import primitives.Vector;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Unit tests for primitives.Cylinder class
+ * @author Renana and Noa
+ */
 class CylinderTest {
 
+    /**
+     * Test method for func getNormal in primitives.Cylinder
+     */
     @Test
     void testGetNormal() {
         // ============ Equivalence Partitions Tests ==============

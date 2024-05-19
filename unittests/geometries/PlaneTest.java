@@ -58,4 +58,16 @@ class PlaneTest {
     //@Test
     //void testTestGetNormal() {
     //}
+
+    /**
+     * Test method for func findIntersections in primitives.Plane
+     */
+    @Test
+    void findIntersections() {
+        // ============ Equivalence Partitions Tests ==============
+
+        // =============== Boundary Values Tests ==================
+    }
+
+
 }

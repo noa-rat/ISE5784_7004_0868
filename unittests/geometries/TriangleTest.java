@@ -29,4 +29,14 @@ class TriangleTest {
         // =============== Boundary Values Tests ==================
 
     }
+
+    /**
+     * Test method for func getNormal in primitives.Triangle
+     */
+    @Test
+    void findIntersections() {
+        // ============ Equivalence Partitions Tests ==============
+
+        // =============== Boundary Values Tests ==================
+    }
 }
