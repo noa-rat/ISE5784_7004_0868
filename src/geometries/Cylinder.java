@@ -4,6 +4,7 @@ import primitives.Point;
 import primitives.Ray;
 import primitives.Vector;
 
+import static primitives.Util.alignZero;
 import static primitives.Util.isZero;
 
 public class Cylinder extends Tube{
@@ -22,14 +23,30 @@ public class Cylinder extends Tube{
 
     @Override
     public Vector getNormal(Point point) {
-        // t -> scalar to to calculate
-        double t = (axis.getDirection()).dotProduct(point.subtract(axis.getHead()));
-        // Treatment of the edge case where the point is on the base
-        if(isZero(t))
+        /**
+         * If the resulting point is equal to the head of the horn
+         */
+        if( point.equals(axis.getHead()))
             return axis.getDirection();
-        // o -> the center of the circle on the tube
-        Point o = (axis.getHead()).add((axis.getDirection()).scale(t));
-        // normal calculate to the circle
-        return (point.subtract(o)).normalize();
+        double t = (axis.getDirection()).dotProduct(point.subtract(axis.getHead()));
+        /**
+         * If t is less than 0 or greater than the height, then we have exceeded the area of the cylinder
+         */
+        if(t<0||t>height)
+            throw new IllegalArgumentException("The point is outside the area of the cylinder");
+        /**
+         * If t is equal to 0 or the height then we are on one of the bases
+         */
+        if(t==0||t==height)
+            return axis.getDirection();
+        /**
+         * t is in the domain of the cylinder
+         */
+        else {
+            Point o = (axis.getHead()).add((axis.getDirection()).scale(alignZero(t)));
+            // normal calculate to the circle
+            return (point.subtract(o)).normalize();
+        }
+
     }
 }
