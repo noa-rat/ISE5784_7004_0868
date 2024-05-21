@@ -25,4 +25,14 @@ class SphereTest {
 
         // =============== Boundary Values Tests ==================
     }
+
+    /**
+     * Test method for func findIntersections in primitives.Sphere
+     */
+    @Test
+    void findIntersections() {
+        // ============ Equivalence Partitions Tests ==============
+
+        // =============== Boundary Values Tests ==================
+    }
 }

@@ -28,7 +28,7 @@ class PlaneTest {
     @Test
     void testConstructor() {
         // ============ Equivalence Partitions Tests ==============
-
+        assertDoesNotThrow(() ->new Plane(x,y,z));//*
         // =============== Boundary Values Tests ==================
         assertThrows(IllegalArgumentException.class, () -> new Plane(x,y1,z),
                 "Error: need throw exception, the points are on the same line");
@@ -58,4 +58,16 @@ class PlaneTest {
     //@Test
     //void testTestGetNormal() {
     //}
+
+    /**
+     * Test method for func findIntersections in primitives.Plane
+     */
+    @Test
+    void findIntersections() {
+        // ============ Equivalence Partitions Tests ==============
+
+        // =============== Boundary Values Tests ==================
+    }
+
+
 }

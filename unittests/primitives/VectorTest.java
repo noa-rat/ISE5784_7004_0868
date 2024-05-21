@@ -25,9 +25,9 @@ class VectorTest {
         // ============ Equivalence Partitions Tests ==============
 
         // =============== Boundary Values Tests ==================
-        assertEquals(new Vector(Double3.ZERO), new Vector(Double3.ZERO),
+        assertThrows(IllegalArgumentException.class, ()->new Vector(Double3.ZERO),
                 "ERROR: zero vector does not throw an exception");
-        assertEquals(new Vector(0,0,0), new Vector(0,0,0),
+        assertThrows(IllegalArgumentException.class,()-> new Vector(0,0,0),
                 "ERROR: zero vector does not throw an exception");
     }
 
@@ -69,9 +69,9 @@ class VectorTest {
                 "ERROR: Vector + Vector does not work correctly");
 
         // =============== Boundary Values Tests ==================
-        assertEquals(new Vector(Double3.ZERO), v1.add(v1Opposite),
+        assertThrows(IllegalArgumentException.class, ()->v1.add(v1Opposite),
                 "ERROR: Vector + -itself does not throw an exception");
-        assertEquals(new Vector(Double3.ZERO), v1.subtract(v1),
+        assertThrows(IllegalArgumentException.class, ()->v1.subtract(v1),
                 "ERROR: Vector - itself does not throw an exception");
     }
 
@@ -111,8 +111,8 @@ class VectorTest {
                 "ERROR: crossProduct() result is not orthogonal to its operands");
 
         // =============== Boundary Values Tests ==================
-        assertEquals(
-                new Vector(Double3.ZERO), v1.crossProduct(v2),
+        assertThrows(
+                IllegalArgumentException.class, ()->v1.crossProduct(v2),
                 "ERROR: crossProduct() for parallel vectors does not throw an exception");
     }
 
@@ -126,7 +126,7 @@ class VectorTest {
         Vector u = v.normalize();
         assertEquals(1, u.length(), DELTA,
                 "ERROR: the normalized vector is not a unit vector");
-        assertEquals(new Vector(Double3.ZERO), v.crossProduct(u),
+        assertThrows(IllegalArgumentException.class, ()->v.crossProduct(u),
                 "ERROR: the normalized vector is not parallel to the original one");
 
         // =============== Boundary Values Tests ==================
