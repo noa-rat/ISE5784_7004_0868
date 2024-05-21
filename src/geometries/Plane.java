@@ -1,9 +1,9 @@
 package geometries;
 
-import primitives.Point;
-import primitives.Ray;
-import primitives.Vector;
+import primitives.*;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Plane implements Geometry{
@@ -51,6 +51,21 @@ public class Plane implements Geometry{
      */
     @Override
     public List<Point> findIntersections(Ray ray) {
-        return null;
+        // Denominator מכנה
+        // numerator מונה
+        double tNumerator = normal.dotProduct(q.subtract(ray.getHead()));
+        double tDenominator = normal.dotProduct(ray.getDirection());
+        if (Util.isZero(tDenominator))
+            return null;
+        double t = tNumerator / tDenominator;
+
+        if(Util.isZero(t) || t < 0)
+            return null;
+        else {
+            Point point = (ray.getHead()).add((ray.getDirection()).scale(t));
+            List<Point> intersections = new LinkedList<Point>();
+            intersections.add(point);
+            return intersections;
+        }
     }
 }

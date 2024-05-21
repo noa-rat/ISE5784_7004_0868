@@ -1,9 +1,10 @@
 package geometries;
 
 import org.junit.jupiter.api.Test;
-import primitives.Double3;
-import primitives.Point;
-import primitives.Vector;
+import primitives.*;
+
+import java.util.LinkedList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -14,19 +15,18 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
  */
 class PlaneTest {
 
-    private final Point x = new Point(1,2,3);
-    private final Point y = new Point(2,2,4);
-    private final Point y1 = new Point(1,2,4);
-    private final Point z = new Point(1,2,5);
-    private final Vector vector1 = new Vector(0,-1,0);
-
-    private final Plane plane = new Plane(x, y, z);
-
     /**
      * Test method for func getNormal in primitives.Plane
      */
     @Test
     void testConstructor() {
+        Point x = new Point(1,2,3);
+        Point y = new Point(2,2,4);
+        Point y1 = new Point(1,2,4);
+        Point z = new Point(1,2,5);
+        Vector vector1 = new Vector(0,-1,0);
+
+        Plane plane = new Plane(x, y, z);
         // ============ Equivalence Partitions Tests ==============
         assertDoesNotThrow(() ->new Plane(x,y,z));//*
         // =============== Boundary Values Tests ==================
@@ -42,6 +42,13 @@ class PlaneTest {
      */
     @Test
     void testGetNormal() {
+        Point x = new Point(1,2,3);
+        Point y = new Point(2,2,4);
+        Point y1 = new Point(1,2,4);
+        Point z = new Point(1,2,5);
+        Vector vector1 = new Vector(0,-1,0);
+
+        Plane plane = new Plane(x, y, z);
         // ============ Equivalence Partitions Tests ==============
         assertEquals(vector1, plane.getNormal(),
                 "Error: The plane normals don't correct");
@@ -65,8 +72,49 @@ class PlaneTest {
     @Test
     void findIntersections() {
         // ============ Equivalence Partitions Tests ==============
+        Plane plane = new Plane(
+                new Point(1,0,0),
+                new Point(0,1,0),
+                new Point(0,0,0)
+        );
+
+        var result = plane.findIntersections(new Ray(new Point(0,0,-1), new Vector(0,1,1)));
+        assertEquals(1,
+                result.size(),
+                "Error: there should be one intersection points");
+
+        assertEquals(null,
+                plane.findIntersections(new Ray(new Point(0,0,-1), new Vector(0,-1,-1))),
+                "Error: there are not intersection points");
 
         // =============== Boundary Values Tests ==================
+        // ??? - הקרן על המישור, מה צריכה להיות התוצאה
+        assertEquals(null,
+                plane.findIntersections(new Ray(new Point(3,4,0), new Vector(1,1,0))),
+                "Error: there are not intersection points");
+
+        assertEquals(null,
+                plane.findIntersections(new Ray(new Point(3,4,1), new Vector(1,1,0))),
+                "Error: there are not intersection points");
+
+        assertEquals(null,
+                plane.findIntersections(new Ray(new Point(3,4,1), new Vector(0,0,1))),
+                "Error: there are not intersection points");
+
+        assertEquals(null,
+                plane.findIntersections(new Ray(new Point(3,4,0), new Vector(0,0,1))),
+                "Error: there are not intersection points");
+
+        result = plane.findIntersections(new Ray(new Point(3,4,-1), new Vector(0,0,1)));
+        assertEquals(1, result.size(), "Error: there are not intersection points");
+
+        assertEquals(null,
+                plane.findIntersections(new Ray(new Point(1,0,0), new Vector(0,1,1))),
+                "Error: there should be one intersection points");
+
+        assertEquals(null,
+                plane.findIntersections(new Ray(new Point(3,4,0), new Vector(0,1,1))),
+                "Error: there should be one intersection points");
     }
 
 
