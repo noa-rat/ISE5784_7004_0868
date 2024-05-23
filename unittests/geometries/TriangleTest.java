@@ -2,6 +2,7 @@ package geometries;
 
 import org.junit.jupiter.api.Test;
 import primitives.Point;
+import primitives.Ray;
 import primitives.Vector;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -35,8 +36,12 @@ class TriangleTest {
      */
     @Test
     void findIntersections() {
+        Triangle triangle = new Triangle(
+                new Point(0,0,1w Point(2,2,4),
+                new Point(1,2,5)
+        );
         // ============ Equivalence Partitions Tests ==============
-
+        assertEquals(1,triangle.findIntersections(new Ray( new Point())));
         // =============== Boundary Values Tests ==================
     }
 }
