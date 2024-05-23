@@ -1,8 +1,7 @@
 package geometries;
 
 import org.junit.jupiter.api.Test;
-import primitives.Point;
-import primitives.Vector;
+import primitives.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -34,9 +33,36 @@ class TriangleTest {
      * Test method for func getNormal in primitives.Triangle
      */
     @Test
-    void findIntersections() {
+    void testfindIntersections() {
+        Triangle triangle = new Triangle(
+                new Point(1,0,0),
+                new Point(3,0,0),
+                new Point(1, 3, 0)
+        );
+
         // ============ Equivalence Partitions Tests ==============
+        var result = triangle.findIntersections(new Ray(new Point(2, 0.5, -1), new Vector(0,0,1)));
+        assertEquals(1,result.size(), "Error: there should be one intersection points");
+
+        assertEquals(null,
+                triangle.findIntersections(new Ray(new Point(2,-1,-1), new Vector(0,0,1))),
+                "Error: there are not intersection points");
+
+        assertEquals(null,
+                triangle.findIntersections(new Ray(new Point(0.5,4,-1), new Vector(0,0,1))),
+                "Error: there are not intersection points");
 
         // =============== Boundary Values Tests ==================
+        assertEquals(null,
+                triangle.findIntersections(new Ray(new Point(2,0,-1), new Vector(0,0,1))),
+                "Error: there are not intersection points");
+
+        assertEquals(null,
+                triangle.findIntersections(new Ray(new Point(1,0,-1), new Vector(0,0,1))),
+                "Error: there are not intersection points");
+
+        assertEquals(null,
+                triangle.findIntersections(new Ray(new Point(4,0,-1), new Vector(0,0,1))),
+                "Error: there are not intersection points");
     }
 }
