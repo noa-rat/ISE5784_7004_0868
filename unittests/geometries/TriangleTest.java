@@ -37,7 +37,7 @@ class TriangleTest {
     @Test
     void findIntersections() {
         Triangle triangle = new Triangle(
-                new Point(0,0,1w Point(2,2,4),
+                new Point(0,0,h1w Point(2,2,4),
                 new Point(1,2,5)
         );
         // ============ Equivalence Partitions Tests ==============
