@@ -1,19 +1,17 @@
 package primitives;
 
-public class Vector extends Point{
+public class Vector extends Point {
     /**
-     *
      * @param xyz to the field of the vector
      */
     public Vector(Double3 xyz) {
         super(xyz);
 
-        if(xyz.equals(xyz.ZERO))
+        if (xyz.equals(Double3.ZERO))
             throw new IllegalArgumentException("Vector is zero");
     }
 
     /**
-     *
      * @param x to the x coordinate of xyz
      * @param y to the y coordinate of xyz
      * @param z to the z coordinate of xyz
@@ -21,7 +19,7 @@ public class Vector extends Point{
     public Vector(double x, double y, double z) {
         super(x, y, z);
 
-        if(xyz.equals(xyz.ZERO))
+        if (xyz.equals(Double3.ZERO))
             throw new IllegalArgumentException("Vector is zero");
     }
 
@@ -43,7 +41,6 @@ public class Vector extends Point{
     }
 
     /**
-     *
      * @return length Squared of the vector,
      * between xyz to the beginning of labor
      */
@@ -52,7 +49,6 @@ public class Vector extends Point{
     }
 
     /**
-     *
      * @return length of the vector,
      * between xyz to the beginning of labor
      */
@@ -97,11 +93,11 @@ public class Vector extends Point{
      * @return Vector
      */
     public Vector crossProduct(Vector vector) {
-       return new Vector(
-               (xyz.d2 * vector.xyz.d3) - (xyz.d3 * vector.xyz.d2),
-               (xyz.d3 * vector.xyz.d1) - (xyz.d1 * vector.xyz.d3),
-               (xyz.d1 * vector.xyz.d2) - (xyz.d2 * vector.xyz.d1)
-       );
+        return new Vector(
+                (xyz.d2 * vector.xyz.d3) - (xyz.d3 * vector.xyz.d2),
+                (xyz.d3 * vector.xyz.d1) - (xyz.d1 * vector.xyz.d3),
+                (xyz.d1 * vector.xyz.d2) - (xyz.d2 * vector.xyz.d1)
+        );
     }
 
     /**

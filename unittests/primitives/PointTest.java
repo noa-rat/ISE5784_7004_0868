@@ -1,12 +1,14 @@
 package primitives;
 
 import org.junit.jupiter.api.Test;
+
 import static java.lang.System.out;
 import static org.junit.jupiter.api.Assertions.*;
 import static primitives.Util.isZero;
 
 /**
  * Unit tests for primitives.Point class
+ *
  * @author Renana and Noa
  */
 public class PointTest {
@@ -43,7 +45,7 @@ public class PointTest {
                 "ERROR: (point2 - point1) does not work correctly");
 
         // =============== Boundary Values Tests ==================
-        assertThrows(IllegalArgumentException.class,()-> p1.subtract(p1),
+        assertThrows(IllegalArgumentException.class, () -> p1.subtract(p1),
                 "ERROR: (point2 - point1) does not work correctly");
     }
 

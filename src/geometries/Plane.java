@@ -6,13 +6,14 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Plane implements Geometry{
+public class Plane implements Geometry {
     private final Point q;
     private final Vector normal;
 
     /**
+     * Constructs a plane by point and normal
      *
-     * @param q on the plane
+     * @param q      on the plane
      * @param normal of the plane
      */
     public Plane(Point q, Vector normal) {
@@ -21,6 +22,7 @@ public class Plane implements Geometry{
     }
 
     /**
+     * Constructs a plane by 3 points on the plane
      *
      * @param x Point on the plane
      * @param y Point on the plane
@@ -33,18 +35,20 @@ public class Plane implements Geometry{
 
     @Override
     public Vector getNormal(Point point) {
-        return getNormal();
-    }
-
-    /**
-     *
-     * @return the normal on the plane
-     */
-    public  Vector getNormal() {
         return normal;
     }
 
     /**
+     * Returns the normal to the plane
+     *
+     * @return the normal on the plane
+     */
+    public Vector getNormal() {
+        return normal;
+    }
+
+    /**
+     * Finds the points of intersection of the ray with the plane
      *
      * @param ray to calculation points of intersection with the plane
      * @return list of points of intersection with the plane
@@ -53,15 +57,20 @@ public class Plane implements Geometry{
     public List<Point> findIntersections(Ray ray) {
         // Denominator מכנה
         // numerator מונה
+        if (q.equals(ray.getHead())) {
+            return null;
+        }
+
         double tNumerator = normal.dotProduct(q.subtract(ray.getHead()));
         double tDenominator = normal.dotProduct(ray.getDirection());
-        if (Util.isZero(tDenominator))
+        if (Util.isZero(tDenominator)) {
             return null;
+        }
         double t = tNumerator / tDenominator;
 
-        if(Util.isZero(t) || t < 0)
+        if (Util.isZero(t) || t < 0) {
             return null;
-        else {
+        } else {
             Point point = (ray.getHead()).add((ray.getDirection()).scale(t));
             List<Point> intersections = new LinkedList<Point>();
             intersections.add(point);

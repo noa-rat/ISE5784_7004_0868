@@ -9,10 +9,11 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Sphere extends RadialGeometry{
+public class Sphere extends RadialGeometry {
     private final Point center;
 
     /**
+     * Constructs a sphere by radius and center point
      *
      * @param radius to the sphere
      * @param center on the sphere
@@ -28,6 +29,7 @@ public class Sphere extends RadialGeometry{
     }
 
     /**
+     * Finds the points of intersection of the ray with the sphere
      *
      * @param ray to calculation points of intersection with the sphere
      * @return list of points of intersection with the sphere
@@ -57,8 +59,7 @@ public class Sphere extends RadialGeometry{
             Point p1 = (ray.getHead()).add((ray.getDirection()).scale(t1));
             intersections.add(p1);
             return intersections;
-        }
-        else {
+        } else {
             Point p1 = (ray.getHead()).add((ray.getDirection()).scale(t1));
             Point p2 = (ray.getHead()).add((ray.getDirection()).scale(t2));
             intersections.add(p1);

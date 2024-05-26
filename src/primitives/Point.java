@@ -4,25 +4,22 @@ import java.util.Objects;
 
 public class Point {
     protected final Double3 xyz;
+    public static final Point ZERO = new Point(0, 0, 0);
 
     /**
-     *
      * @param xyz to the field of the point
      */
     public Point(Double3 xyz) {
         this.xyz = xyz;
     }
 
-    public static final Point ZERO = new Point(0, 0, 0);
-
     /**
-     *
      * @param x to the x coordinate of xyz
      * @param y to the y coordinate of xyz
      * @param z to the z coordinate of xyz
      */
     public Point(double x, double y, double z) {
-        xyz = new Double3(x,y,z);
+        xyz = new Double3(x, y, z);
     }
 
     @Override
@@ -63,7 +60,6 @@ public class Point {
     }
 
     /**
-     *
      * @param point Calculate the distance squared
      * @return the distance squared
      */
@@ -74,7 +70,6 @@ public class Point {
     }
 
     /**
-     *
      * @param point to Calculate the distance
      * @return distance between two points
      */

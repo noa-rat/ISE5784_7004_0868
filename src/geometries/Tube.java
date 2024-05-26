@@ -1,15 +1,13 @@
 package geometries;
 
-import primitives.Point;
-import primitives.Ray;
-import primitives.Vector;
+import primitives.*;
 
 import java.util.List;
 
 import static primitives.Util.alignZero;
 import static primitives.Util.isZero;
 
-public class Tube extends RadialGeometry{
+public class Tube extends RadialGeometry {
     protected final Ray axis;
 
     public Tube(double radius, Ray axis) {
@@ -28,6 +26,7 @@ public class Tube extends RadialGeometry{
     }
 
     /**
+     * Finds intersection points of the tube with the ray
      *
      * @param ray to calculation points of intersection with the tube
      * @return list of points of intersection with the tube
