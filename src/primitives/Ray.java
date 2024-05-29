@@ -7,8 +7,7 @@ public class Ray {
     private final Vector direction;
 
     /**
-     *
-     * @param head to the head of the ray
+     * @param head      to the head of the ray
      * @param direction the direction of the ray
      */
     public Ray(Point head, Vector direction) {

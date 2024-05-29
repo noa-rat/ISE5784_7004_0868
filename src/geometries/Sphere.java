@@ -5,14 +5,13 @@ import primitives.Ray;
 import primitives.Util;
 import primitives.Vector;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
-public class Sphere extends RadialGeometry{
+public class Sphere extends RadialGeometry {
     private final Point center;
 
     /**
+     * Constructs a sphere by radius and center point
      *
      * @param radius to the sphere
      * @param center on the sphere
@@ -28,6 +27,7 @@ public class Sphere extends RadialGeometry{
     }
 
     /**
+     * Finds the points of intersection of the ray with the sphere
      *
      * @param ray to calculation points of intersection with the sphere
      * @return list of points of intersection with the sphere
@@ -44,26 +44,25 @@ public class Sphere extends RadialGeometry{
         double th = Math.sqrt((radius * radius) - (d * d));
         double t1 = tm + th;
         double t2 = tm - th;
-        List<Point> intersections = new LinkedList<Point>();
+
         if ((Util.isZero(t1) && Util.isZero(t2)) || (t1 < 0 && t2 < 0)) {
             return null;
         }
         if (Util.isZero(t1) || t1 < 0) {
             Point p2 = (ray.getHead()).add((ray.getDirection()).scale(t2));
-            intersections.add(p2);
-            return intersections;
+            return List.of(p2);
         }
         if (Util.isZero(t2) || t2 < 0) {
             Point p1 = (ray.getHead()).add((ray.getDirection()).scale(t1));
-            intersections.add(p1);
-            return intersections;
-        }
-        else {
+            return List.of(p1);
+        } else {
             Point p1 = (ray.getHead()).add((ray.getDirection()).scale(t1));
             Point p2 = (ray.getHead()).add((ray.getDirection()).scale(t2));
-            intersections.add(p1);
-            intersections.add(p2);
-            return intersections;
+            if (t1 < t2) {
+                return List.of(p1, p2);
+            } else {
+                return List.of(p2, p1);
+            }
         }
     }
 }

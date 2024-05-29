@@ -4,8 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="580921d5-819b-4cc3-b9af-dab1a6cd6754" name="Changes" comment="a">
+    <list default="true" id="580921d5-819b-4cc3-b9af-dab1a6cd6754" name="Changes" comment="continue2 stage 3">
+      <change afterPath="$PROJECT_DIR$/src/geometries/Geometries.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/unittests/geometries/GeometriesTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Plane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Plane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Sphere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Sphere.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Triangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Triangle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/primitives/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Point.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,14 +21,11 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
         <option value="JUnit5 Test Class" />
-        <option value="Interface" />
       </list>
     </option>
-  </component>
-  <component name="Git.Merge.Settings">
-    <option name="BRANCH" value="origin/master" />
   </component>
   <component name="Git.Settings">
     <option name="PUSH_TAGS">
@@ -41,8 +44,8 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/noa-rat/ISE5784_7004_0868&quot;,
-    &quot;accountId&quot;: &quot;4501d20d-075e-48a5-b1da-bd6a107fcfd4&quot;
+    &quot;url&quot;: &quot;https://github.com/noa-rat/ISE5784_7004_0868.git&quot;,
+    &quot;accountId&quot;: &quot;4c7faf96-0a96-498f-afc3-0b43638e2344&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -63,8 +66,10 @@
     &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
     &quot;JUnit.All in ISE5784_7004_0868.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.CylinderTest.testGetNormal.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PlaneTest.findIntersections.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.PointTest.testSubtract.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.SphereTest.findIntersections.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TriangleTest.testfindIntersections.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.TubeTest.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.TubeTest.testGetNormal.executor&quot;: &quot;Run&quot;,
     &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
@@ -96,7 +101,20 @@
       <recent name="primitives" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.SphereTest.findIntersections">
+  <component name="RunManager" selected="JUnit.PlaneTest.findIntersections">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="test.Main" />
+      <module name="ISE5784_7004_0868" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="All in ISE5784_7004_0868" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5784_7004_0868" />
       <option name="PACKAGE_NAME" value="" />
@@ -105,7 +123,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CylinderTest.testGetNormal" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PlaneTest.findIntersections" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5784_7004_0868" />
       <extension name="coverage">
         <pattern>
@@ -114,8 +132,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="geometries" />
-      <option name="MAIN_CLASS_NAME" value="geometries.CylinderTest" />
-      <option name="METHOD_NAME" value="testGetNormal" />
+      <option name="MAIN_CLASS_NAME" value="geometries.PlaneTest" />
+      <option name="METHOD_NAME" value="findIntersections" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -137,7 +155,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TubeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TriangleTest.testfindIntersections" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5784_7004_0868" />
       <extension name="coverage">
         <pattern>
@@ -146,23 +164,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="geometries" />
-      <option name="MAIN_CLASS_NAME" value="geometries.TubeTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TubeTest.testGetNormal" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ISE5784_7004_0868" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="geometries.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="geometries" />
-      <option name="MAIN_CLASS_NAME" value="geometries.TubeTest" />
-      <option name="METHOD_NAME" value="testGetNormal" />
+      <option name="MAIN_CLASS_NAME" value="geometries.TriangleTest" />
+      <option name="METHOD_NAME" value="testfindIntersections" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -170,13 +173,21 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.SphereTest.findIntersections" />
-        <item itemvalue="JUnit.CylinderTest.testGetNormal" />
-        <item itemvalue="JUnit.TubeTest.testGetNormal" />
-        <item itemvalue="JUnit.TubeTest" />
+        <item itemvalue="JUnit.PlaneTest.findIntersections" />
         <item itemvalue="JUnit.All in ISE5784_7004_0868" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.TriangleTest.testfindIntersections" />
+        <item itemvalue="JUnit.SphereTest.findIntersections" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -191,6 +202,11 @@
       <workItem from="1715495841891" duration="3924000" />
       <workItem from="1715499810206" duration="14330000" />
       <workItem from="1715588073913" duration="7361000" />
+      <workItem from="1716472997280" duration="2658000" />
+      <workItem from="1716478265620" duration="6000" />
+      <workItem from="1716719870383" duration="8278000" />
+      <workItem from="1716899473668" duration="631000" />
+      <workItem from="1716926627423" duration="3723000" />
     </task>
     <task id="LOCAL‎-00001" summary="half stage 1 (primitives)">
       <option name="closed" value="true" />
@@ -256,23 +272,39 @@
       <option name="project" value="LOCAL‎" />
       <updated>1716128121001</updated>
     </task>
-    <task id="LOCAL‎-00009" summary="continue stage 3">
+    <task id="LOCAL‎-00009" summary="half stage 3">
       <option name="closed" value="true" />
-      <created>1716473040139</created>
+      <created>1716305293861</created>
       <option name="number" value="00009" />
       <option name="presentableId" value="LOCAL‎-00009" />
       <option name="project" value="LOCAL‎" />
-      <updated>1716473040139</updated>
+      <updated>1716305293861</updated>
     </task>
     <task id="LOCAL‎-00010" summary="a">
       <option name="closed" value="true" />
-      <created>1716729499236</created>
+      <created>1716473048592</created>
       <option name="number" value="00010" />
       <option name="presentableId" value="LOCAL‎-00010" />
       <option name="project" value="LOCAL‎" />
-      <updated>1716729499236</updated>
+      <updated>1716473048592</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL‎-00011" summary="stage 3">
+      <option name="closed" value="true" />
+      <created>1716475641033</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL‎-00011" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1716475641033</updated>
+    </task>
+    <task id="LOCAL‎-00012" summary="continue2 stage 3">
+      <option name="closed" value="true" />
+      <created>1716729377148</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL‎-00012" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1716729377148</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -286,8 +318,10 @@
     <MESSAGE value="stage 2 update" />
     <MESSAGE value="cylinder" />
     <MESSAGE value="start stage 3" />
-    <MESSAGE value="continue stage 3" />
+    <MESSAGE value="half stage 3" />
     <MESSAGE value="a" />
-    <option name="LAST_COMMIT_MESSAGE" value="a" />
+    <MESSAGE value="stage 3" />
+    <MESSAGE value="continue2 stage 3" />
+    <option name="LAST_COMMIT_MESSAGE" value="continue2 stage 3" />
   </component>
 </project>

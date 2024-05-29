@@ -8,6 +8,7 @@ import static primitives.Util.isZero;
 
 /**
  * Unit tests for primitives.Vector class
+ *
  * @author Renana and Noa
  */
 class VectorTest {
@@ -25,9 +26,9 @@ class VectorTest {
         // ============ Equivalence Partitions Tests ==============
 
         // =============== Boundary Values Tests ==================
-        assertThrows(IllegalArgumentException.class, ()->new Vector(Double3.ZERO),
+        assertThrows(IllegalArgumentException.class, () -> new Vector(Double3.ZERO),
                 "ERROR: zero vector does not throw an exception");
-        assertThrows(IllegalArgumentException.class,()-> new Vector(0,0,0),
+        assertThrows(IllegalArgumentException.class, () -> new Vector(0, 0, 0),
                 "ERROR: zero vector does not throw an exception");
     }
 
@@ -69,9 +70,9 @@ class VectorTest {
                 "ERROR: Vector + Vector does not work correctly");
 
         // =============== Boundary Values Tests ==================
-        assertThrows(IllegalArgumentException.class, ()->v1.add(v1Opposite),
+        assertThrows(IllegalArgumentException.class, () -> v1.add(v1Opposite),
                 "ERROR: Vector + -itself does not throw an exception");
-        assertThrows(IllegalArgumentException.class, ()->v1.subtract(v1),
+        assertThrows(IllegalArgumentException.class, () -> v1.subtract(v1),
                 "ERROR: Vector - itself does not throw an exception");
     }
 
@@ -112,7 +113,7 @@ class VectorTest {
 
         // =============== Boundary Values Tests ==================
         assertThrows(
-                IllegalArgumentException.class, ()->v1.crossProduct(v2),
+                IllegalArgumentException.class, () -> v1.crossProduct(v2),
                 "ERROR: crossProduct() for parallel vectors does not throw an exception");
     }
 
@@ -126,7 +127,7 @@ class VectorTest {
         Vector u = v.normalize();
         assertEquals(1, u.length(), DELTA,
                 "ERROR: the normalized vector is not a unit vector");
-        assertThrows(IllegalArgumentException.class, ()->v.crossProduct(u),
+        assertThrows(IllegalArgumentException.class, () -> v.crossProduct(u),
                 "ERROR: the normalized vector is not parallel to the original one");
 
         // =============== Boundary Values Tests ==================

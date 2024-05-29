@@ -11,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * Unit tests for primitives.Plane class
+ *
  * @author Renana and Noa
  */
 class PlaneTest {
@@ -20,20 +21,20 @@ class PlaneTest {
      */
     @Test
     void testConstructor() {
-        Point x = new Point(1,2,3);
-        Point y = new Point(2,2,4);
-        Point y1 = new Point(1,2,4);
-        Point z = new Point(1,2,5);
-        Vector vector1 = new Vector(0,-1,0);
+        Point x = new Point(1, 2, 3);
+        Point y = new Point(2, 2, 4);
+        Point y1 = new Point(1, 2, 4);
+        Point z = new Point(1, 2, 5);
+        Vector vector1 = new Vector(0, -1, 0);
 
         Plane plane = new Plane(x, y, z);
         // ============ Equivalence Partitions Tests ==============
-        assertDoesNotThrow(() ->new Plane(x,y,z));//*
+        assertDoesNotThrow(() -> new Plane(x, y, z));//*
         // =============== Boundary Values Tests ==================
-        assertThrows(IllegalArgumentException.class, () -> new Plane(x,y1,z),
+        assertThrows(IllegalArgumentException.class, () -> new Plane(x, y1, z),
                 "Error: need throw exception, the points are on the same line");
 
-        assertThrows(IllegalArgumentException.class, () -> new Plane(x,x,z),
+        assertThrows(IllegalArgumentException.class, () -> new Plane(x, x, z),
                 "Error: need throw exception, the first and second points are connected");
     }
 
@@ -42,11 +43,11 @@ class PlaneTest {
      */
     @Test
     void testGetNormal() {
-        Point x = new Point(1,2,3);
-        Point y = new Point(2,2,4);
-        Point y1 = new Point(1,2,4);
-        Point z = new Point(1,2,5);
-        Vector vector1 = new Vector(0,-1,0);
+        Point x = new Point(1, 2, 3);
+        Point y = new Point(2, 2, 4);
+        Point y1 = new Point(1, 2, 4);
+        Point z = new Point(1, 2, 5);
+        Vector vector1 = new Vector(0, -1, 0);
 
         Plane plane = new Plane(x, y, z);
         // ============ Equivalence Partitions Tests ==============
@@ -73,47 +74,48 @@ class PlaneTest {
     void findIntersections() {
         // ============ Equivalence Partitions Tests ==============
         Plane plane = new Plane(
-                new Point(1,0,0),
-                new Point(0,1,0),
-                new Point(0,0,0)
+                new Point(1, 0, 0),
+                new Point(0, 1, 0),
+                new Point(0, 0, 0)
         );
 
-        var result = plane.findIntersections(new Ray(new Point(0,0,-1), new Vector(0,1,1)));
+        // the ray intersects tha plane
+        var result = plane.findIntersections(new Ray(new Point(0, 0, -1), new Vector(0, 1, 1)));
         assertEquals(1,
                 result.size(),
                 "Error: there should be one intersection points");
 
-        assertEquals(null,
-                plane.findIntersections(new Ray(new Point(0,0,-1), new Vector(0,-1,-1))),
+        // the ray doesn't intersects the plane
+        assertNull(plane.findIntersections(new Ray(new Point(0, 0, -1), new Vector(0, -1, -1))),
                 "Error: there are not intersection points");
 
         // =============== Boundary Values Tests ==================
         // ??? - הקרן על המישור, מה צריכה להיות התוצאה
-        assertEquals(null,
-                plane.findIntersections(new Ray(new Point(3,4,0), new Vector(1,1,0))),
+        assertNull(plane.findIntersections(new Ray(new Point(3, 4, 0), new Vector(1, 1, 0))),
                 "Error: there are not intersection points");
 
-        assertEquals(null,
-                plane.findIntersections(new Ray(new Point(3,4,1), new Vector(1,1,0))),
+        // the ray is parallel and not on the plane
+        assertNull(plane.findIntersections(new Ray(new Point(3, 4, 1), new Vector(1, 1, 0))),
                 "Error: there are not intersection points");
 
-        assertEquals(null,
-                plane.findIntersections(new Ray(new Point(3,4,1), new Vector(0,0,1))),
+        // the ray is perpendicular and after the plane
+        assertNull(plane.findIntersections(new Ray(new Point(3, 4, 1), new Vector(0, 0, 1))),
                 "Error: there are not intersection points");
 
-        assertEquals(null,
-                plane.findIntersections(new Ray(new Point(3,4,0), new Vector(0,0,1))),
+        // the ray is perpendicular to the plane
+        assertNull(plane.findIntersections(new Ray(new Point(3, 4, 0), new Vector(0, 0, 1))),
                 "Error: there are not intersection points");
 
-        result = plane.findIntersections(new Ray(new Point(3,4,-1), new Vector(0,0,1)));
+        // the ray is perpendicular and in front of the plane
+        result = plane.findIntersections(new Ray(new Point(3, 4, -1), new Vector(0, 0, 1)));
         assertEquals(1, result.size(), "Error: there are not intersection points");
 
-        assertEquals(null,
-                plane.findIntersections(new Ray(new Point(1,0,0), new Vector(0,1,1))),
+        // the ray starts at the same point that the plane is represented by
+        assertNull(plane.findIntersections(new Ray(new Point(1, 0, 0), new Vector(0, 1, 1))),
                 "Error: there should be one intersection points");
 
-        assertEquals(null,
-                plane.findIntersections(new Ray(new Point(3,4,0), new Vector(0,1,1))),
+        // the ray starts on the plane
+        assertNull(plane.findIntersections(new Ray(new Point(3, 4, 0), new Vector(0, 1, 1))),
                 "Error: there should be one intersection points");
     }
 
