@@ -20,14 +20,6 @@ class GeometriesTest {
     void testFindIntersections() {
         // ============ Equivalence Partitions Tests ==============
 
-        // =============== Boundary Values Tests ==================
-        // The bodies collection is empty
-        Geometries geometries1 = new Geometries();
-        assertNull(geometries1.findIntersections(
-                        new Ray(new Point(30, 30, 30), new Vector(1, 1, 1))),
-                "Error: there are not geometies in the list");
-
-        // there are not intersection points
         Plane plane = new Plane(
                 new Point(1, 0, 0),
                 new Point(0, 1, 0),
@@ -37,14 +29,33 @@ class GeometriesTest {
                 new Point(0, 0, 1));
 
         Triangle triangle = new Triangle(
-                new Point(1, 2, 3),
-                new Point(2, 2, 4),
-                new Point(1, 2, 5)
+                new Point(0, 1, 0),
+                new Point(0, 0.5, 0),
+                new Point(1, 1, 0)
         );
+        Geometries geometries1 = new Geometries(plane,sphere, triangle);
+        var result=geometries1.findIntersections(new Ray(new Point(0,1.1,1),new Vector(0,0,-1)));
+        assertEquals(2,result.size(),"Error:The rey should intersect some geometric bodies");
+
+
+        // =============== Boundary Values Tests ==================
+        // The bodies collection is empty
+         geometries1 = new Geometries();
+        result=geometries1.findIntersections(
+                new Ray(new Point(30, 30, 30), new Vector(1, 1, 1)));
+        assertEquals(0,result.size(),
+                "Error: there are not geometies in the list");
+
+        // there are not intersection points
         Geometries geometries2 = new Geometries(plane,sphere, triangle);
         assertNull(geometries2.findIntersections(
                         new Ray(new Point(30, 30, 30), new Vector(1, 1, 1))),
                 "Error: there are not intersection points");
+
+        //All bodies are cut
+        result=geometries1.findIntersections(new Ray(new Point(0.5,0.9,-0.5),new Vector(0,0,1)));
+        assertEquals(3,result.size()," Error: The rey should intersect all geometric bodies");
+
 
         // one geometry is cut
         plane = new Plane(
@@ -61,7 +72,7 @@ class GeometriesTest {
                 new Point(-1, -2, -5)
         );
         geometries2 = new Geometries(plane,sphere, triangle);
-        var result = geometries2.findIntersections(
+         result = geometries2.findIntersections(
                 new Ray(new Point(0, 0, 2), new Vector(0, 0, 1)));
         assertEquals(1, result.size(), "Error: ne geometry is cut, one intersection point");
     }

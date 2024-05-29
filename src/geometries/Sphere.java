@@ -49,15 +49,15 @@ public class Sphere extends RadialGeometry {
             return null;
         }
         if (Util.isZero(t1) || t1 < 0) {
-            Point p2 = (ray.getHead()).add((ray.getDirection()).scale(t2));
+            Point p2 = (ray.getPoint(t2));
             return List.of(p2);
         }
         if (Util.isZero(t2) || t2 < 0) {
-            Point p1 = (ray.getHead()).add((ray.getDirection()).scale(t1));
+            Point p1 = (ray.getPoint(t1));
             return List.of(p1);
         } else {
-            Point p1 = (ray.getHead()).add((ray.getDirection()).scale(t1));
-            Point p2 = (ray.getHead()).add((ray.getDirection()).scale(t2));
+            Point p1 = (ray.getPoint(t1));
+            Point p2 = (ray.getPoint(t2));
             if (t1 < t2) {
                 return List.of(p1, p2);
             } else {

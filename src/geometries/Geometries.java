@@ -20,8 +20,8 @@ public class Geometries implements Intersectable{
     }
 
     /**
-     *
-     * @param geometries
+     *The add function adds a list of the geometric entities to the field listGeometries
+     * @param geometries List of all geometric bodies
      */
     public void add(Intersectable... geometries) {
         listGeometries.addAll(Arrays.asList(geometries));
@@ -29,6 +29,20 @@ public class Geometries implements Intersectable{
 
     @Override
     public List<Point> findIntersections(Ray ray) {
-        return null;
+        List<Point> listOfPoints=new LinkedList<Point>();
+        for(Intersectable geometry:listGeometries)
+        {
+            var result=geometry.findIntersections(ray);
+            if(result!=null)
+            {
+                listOfPoints.addAll(result);
+            }
+
+        }
+        if(listOfPoints.isEmpty())
+        {
+            return null;
+        }
+        return listOfPoints;
     }
 }
