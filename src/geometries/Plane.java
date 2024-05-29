@@ -72,9 +72,7 @@ public class Plane implements Geometry {
             return null;
         } else {
             Point point = (ray.getHead()).add((ray.getDirection()).scale(t));
-            List<Point> intersections = new LinkedList<Point>();
-            intersections.add(point);
-            return intersections;
+            return  List.of(point);
         }
     }
 }

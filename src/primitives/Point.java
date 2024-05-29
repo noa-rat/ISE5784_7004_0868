@@ -40,7 +40,7 @@ public class Point {
     }
 
     /**
-     * add point and vector
+     * connects a vector to the point
      *
      * @param vector to add
      * @return point
@@ -50,7 +50,7 @@ public class Point {
     }
 
     /**
-     * subtract point and point
+     * subtracts a point from the point
      *
      * @param point to sub
      * @return vector
@@ -60,6 +60,8 @@ public class Point {
     }
 
     /**
+     * Calculate the distance squared between two point
+     *
      * @param point Calculate the distance squared
      * @return the distance squared
      */
@@ -70,6 +72,8 @@ public class Point {
     }
 
     /**
+     * Calculate the distance between two point
+     *
      * @param point to Calculate the distance
      * @return distance between two points
      */
