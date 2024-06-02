@@ -97,6 +97,18 @@ public class Camera implements Cloneable{
         return null;
     }
 
+    @Override
+    public Camera clone() {
+        try {
+            Camera clone = (Camera) super.clone();
+            // TODO: copy mutable state here, so the clone can't change the internals of the original
+            return clone;
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
+    }
+
+
     /**
      * the class that build the camera in Builder Design Pattern
      */
@@ -148,7 +160,6 @@ public class Camera implements Cloneable{
             }
             camera.vTo = vTo.normalize();
             camera.vUp = vUp.normalize();
-            camera.vRight = vTo.crossProduct(vUp);
 
             return this;
         }
@@ -183,9 +194,14 @@ public class Camera implements Cloneable{
             return this;
         }
 
+        /**
+         * Calls all functions within the class to create the camera object
+         * @return camera
+         */
         public Camera build() {
             final String misRender = "Error: Missing render data";
             final String nameClass = "Camera";
+
             if (camera.p0 == null) {
                 throw new MissingResourceException(misRender, nameClass, "p0");
             }
@@ -195,9 +211,8 @@ public class Camera implements Cloneable{
             if (camera.vUp == null) {
                 throw new MissingResourceException(misRender, nameClass, "vUp");
             }
-            if (camera.vRight == null) {
-                throw new MissingResourceException(misRender, nameClass, "vRight");
-            }
+            camera.vRight =(camera.vTo.crossProduct(camera.vUp)).normalize();
+
             if (camera.viewPlaneHeight == 0.0) {
                 throw new MissingResourceException(misRender, nameClass, "viewPlaneHeight");
             }
@@ -207,6 +222,10 @@ public class Camera implements Cloneable{
             if (camera.viewPlaneDistance == 0.0) {
                 throw new MissingResourceException(misRender, nameClass, "viewPlaneDistance");
             }
+
+            return (Camera)camera.clone();
         }
+
     }
+
 }
