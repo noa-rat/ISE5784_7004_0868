@@ -71,7 +71,7 @@ public class Plane implements Geometry {
         if (Util.isZero(t) || t < 0) {
             return null;
         } else {
-            Point point = (ray.getHead()).add((ray.getDirection()).scale(t));
+            Point point = (ray.getPoint(t));
             return  List.of(point);
         }
     }

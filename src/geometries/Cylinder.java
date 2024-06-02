@@ -45,7 +45,7 @@ public class Cylinder extends Tube {
          * t is in the domain of the cylinder
          */
         else {
-            Point o = (axis.getHead()).add((axis.getDirection()).scale(alignZero(t)));
+            Point o = (axis.getPoint(t));
             // normal calculate to the circle
             return (point.subtract(o)).normalize();
         }
