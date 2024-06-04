@@ -159,7 +159,7 @@ private int AllIntersectionsGeometry(Intersectable geometry,Camera camera) {
         assertEquals(9,AllIntersectionsGeometry(plane,camera),
                 "Error: There should be 9 intersection points");
         ///////////////////////////////////////////////////////////////////////////////
-        plane=new Plane(new Point(0,0,-2),new Vector(0,0.7,-1));
+        plane=new Plane(new Point(0,0,-2),new Vector(0,2,-1));
 
         assertEquals(6,AllIntersectionsGeometry(plane,camera),
                 "Error: There should be 6 intersection points");

@@ -16,9 +16,9 @@ public class Triangle extends Polygon {
 
         // Denominator מכנה
         // numerator מונה
-        Vector v1 = (this.vertices.get(0)).subtract(this.vertices.get(1));
-        Vector v2 = (this.vertices.get(1)).subtract(this.vertices.get(2));
-        Vector v3 = (this.vertices.get(2)).subtract(this.vertices.get(3));
+        Vector v1 = (this.vertices.get(0)).subtract(this.vertices.get(2));
+        Vector v2 = (this.vertices.get(2)).subtract(this.vertices.get(1));
+        Vector v3 = (this.vertices.get(1)).subtract(this.vertices.get(0));
         double numerator1 = (v1).dotProduct(v2);
         double Denominator1 = (v1.length())*(v2.length());
         double angle1 = numerator1 / Denominator1;

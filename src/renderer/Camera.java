@@ -94,7 +94,22 @@ public class Camera implements Cloneable{
      * @return the ray from the camera to the pixel in the view plane
      */
     public Ray constructRay(int nX, int nY, int j, int i) {
-        return null;
+        Point pc=p0.add(vTo.scale(viewPlaneDistance));
+        double rY=(viewPlaneHeight/nY);
+        double rX=(viewPlaneWidth/nX);
+        double xJ=(j-((nX-1)/2.0))*rX;
+        double yI=-(i-((nY-1)/2.0))*rY;
+        Point pIJ=pc;
+        if(xJ!=0)
+        {
+            pIJ=pIJ.add(vRight.scale(xJ));
+        }
+        if(yI!=0)
+        {
+            pIJ=pIJ.add(vUp.scale(yI));
+        }
+        //Calculation of the direction of the ray that is imposed from the PIJ
+        return new Ray(p0,pIJ.subtract(p0).normalize());
     }
 
     @Override
