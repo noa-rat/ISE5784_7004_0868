@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="580921d5-819b-4cc3-b9af-dab1a6cd6754" name="Changes" comment="continue3 stage 3">
-      <change afterPath="$PROJECT_DIR$/src/renderer/Camera.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="580921d5-819b-4cc3-b9af-dab1a6cd6754" name="Changes" comment="half stage 4" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -204,7 +201,7 @@
       <workItem from="1716926627423" duration="3723000" />
       <workItem from="1716986277136" duration="398000" />
       <workItem from="1717068015480" duration="5309000" />
-      <workItem from="1717325743383" duration="847000" />
+      <workItem from="1717325743383" duration="2285000" />
     </task>
     <task id="LOCAL‎-00001" summary="half stage 1 (primitives)">
       <option name="closed" value="true" />
@@ -310,7 +307,15 @@
       <option name="project" value="LOCAL‎" />
       <updated>1716986308540</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL‎-00014" summary="half stage 4">
+      <option name="closed" value="true" />
+      <created>1717326762889</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL‎-00014" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1717326762893</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -329,6 +334,7 @@
     <MESSAGE value="stage 3" />
     <MESSAGE value="continue2 stage 3" />
     <MESSAGE value="continue3 stage 3" />
-    <option name="LAST_COMMIT_MESSAGE" value="continue3 stage 3" />
+    <MESSAGE value="half stage 4" />
+    <option name="LAST_COMMIT_MESSAGE" value="half stage 4" />
   </component>
 </project>
