@@ -65,6 +65,15 @@ public class Ray {
      * @return the point from the list that closest to the ray
      */
     public Point findClosestPoint(List<Point> points) {
+        if (points.isEmpty())
+            return null;
 
+        Point closestPoint = points.getFirst();
+        for(Point point : points)
+        {
+            if (point.distance(head) < closestPoint.distance(head))
+                closestPoint = point;
+        }
+        return closestPoint;
     }
 }

@@ -9,12 +9,14 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
+ * Unit tests for primitives.Ray class
  *
+ * @author Renana and Noa
  */
 class RayTest {
 
     /**
-     *
+     * Test method for func getPoint in primitives.Ray
      */
     @Test
     void getPoint() {
@@ -30,20 +32,38 @@ class RayTest {
     }
 
     /**
-     *
+     * Test method for func testFindClosestPoint in primitives.Ray
      */
     @Test
     void testFindClosestPoint() {
         // ============ Equivalence Partitions Tests ==============
         List<Point> points = new LinkedList<Point>();
-        points.add(new Point(0, 10,0));
-        points.add(new Point(0, 1,0));
-        points.add(new Point(0, 5, 0));
+        points.add(new Point(10, 0,0));
+        points.add(new Point(1, 0,0));
+        points.add(new Point(5, 0, 0));
 
-        assertEquals(new Point(0,1,0), (new Ray(Point.ZERO, new Vector(1,0,0))).findClosestPoint(points),
-                "Error: the point should be (0,1,0)");
+        assertEquals(new Point(1,0,0), (new Ray(Point.ZERO, new Vector(1,0,0))).findClosestPoint(points),
+                "Error: the point should be (1,0,0)");
 
         // =============== Boundary Values Tests ==================
+        // the list is empty
+        points.clear();
+        assertNull((new Ray(Point.ZERO, new Vector(1,0,0))).findClosestPoint(points),
+                "Error: the list is empty");
 
+        // the close point is first in the list
+        points.add(new Point(1, 0,0));
+        points.add(new Point(10, 0,0));
+        points.add(new Point(5, 0, 0));
+        assertEquals(new Point(1,0,0), (new Ray(Point.ZERO, new Vector(1,0,0))).findClosestPoint(points),
+                "Error: the point should be (1,0,0)");
+
+        // the close point is last in the list
+        points.clear();
+        points.add(new Point(10, 0,0));
+        points.add(new Point(5, 0, 0));
+        points.add(new Point(1, 0,0));
+        assertEquals(new Point(1,0,0), (new Ray(Point.ZERO, new Vector(1,0,0))).findClosestPoint(points),
+                "Error: the point should be (1,0,0)");
     }
 }

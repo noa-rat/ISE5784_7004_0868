@@ -19,6 +19,9 @@ public class Camera implements Cloneable{
     private double viewPlaneWidth = 0.0;
     private double viewPlaneDistance = 0.0;
 
+    private ImageWriter imageWriter;
+    private RayTracerBase rayTracer;
+
     /**
      *
      * @return the Camera location
@@ -123,6 +126,59 @@ public class Camera implements Cloneable{
         }
     }
 
+    /**
+     * Processes the image
+     */
+    public Camera renderImage() {
+        for (int x = 0; x < imageWriter.getNx(); x++)
+        {
+            for(int y = 0; y < imageWriter.getNy(); y++)
+            {
+                castRay(imageWriter.getNx(), imageWriter.getNy(), x, y);
+            }
+        }
+        return this;
+    }
+
+    /**
+     * Casts a ray on a certain pixel and colors it
+     * @param nX - the number of rows in the view plane
+     * @param nY - the number of columns in the view plane
+     * @param x - the row number of the pixel
+     * @param y - the column number of the pixel
+     */
+    private void castRay(int nX, int nY, int x, int y) {
+        ///////////////////////////////////////
+        Ray ray = constructRay(nX, nY, y, x);
+        ///////////////////////////////////////
+        Color color = rayTracer.traceRay(ray);
+        imageWriter.writePixel(x, y, color);
+    }
+
+    /**
+     * Adds a grid to the imageWriter
+     * @param interval - How many pixels are there in each square in the grid
+     * @param color - the color of the grid
+     */
+    public Camera printGrid(int interval, Color color) {
+        for (int x = 0; x < imageWriter.getNx(); x++)
+        {
+            for(int y = 0; y < imageWriter.getNy(); y++)
+            {
+                if (x % interval == 0 || y % interval == 0)
+                    imageWriter.writePixel(x, y, color);
+            }
+        }
+        imageWriter.writeToImage();
+        return this;
+    }
+
+    /**
+     * Runs the image maker of writerImage
+     */
+    public void writeToImage() {
+        imageWriter.writeToImage();
+    }
 
     /**
      * the class that build the camera in Builder Design Pattern
@@ -210,6 +266,30 @@ public class Camera implements Cloneable{
         }
 
         /**
+         * Initializing the imageWriter
+         *
+         * @param imageWriter to initializing the field imageWriter of the camera
+         * @return the object of the build
+         */
+        public Builder setImageWriter(ImageWriter imageWriter) {
+            camera.imageWriter = imageWriter;
+
+            return this;
+        }
+
+        /**
+         * Initializing the rayTracer
+         *
+         * @param rayTracer to initializing the field rayTracer of the camera
+         * @return the object of the build
+         */
+        public Builder setRayTracer(RayTracerBase rayTracer) {
+            camera.rayTracer = rayTracer;
+
+            return this;
+        }
+
+        /**
          * Calls all functions within the class to create the camera object
          * @return camera
          */
@@ -236,6 +316,12 @@ public class Camera implements Cloneable{
             }
             if (camera.viewPlaneDistance == 0.0) {
                 throw new MissingResourceException(misRender, nameClass, "viewPlaneDistance");
+            }
+            if (camera.imageWriter == null) {
+                throw new MissingResourceException(misRender, nameClass, "imageWriter");
+            }
+            if (camera.rayTracer == null) {
+                throw new MissingResourceException(misRender, nameClass, "rayTracer");
             }
 
             return (Camera)camera.clone();
