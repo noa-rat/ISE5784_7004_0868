@@ -1,5 +1,6 @@
 package primitives;
 
+import java.util.List;
 import java.util.Objects;
 
 public class Ray {
@@ -56,5 +57,23 @@ public class Ray {
            return head;
         }
         return head.add(direction.scale(t));
+    }
+
+    /**
+     * Finds the point from the list that is closest to the corner
+     * @param points - list of points
+     * @return the point from the list that closest to the ray
+     */
+    public Point findClosestPoint(List<Point> points) {
+        if (points.isEmpty())
+            return null;
+
+        Point closestPoint = points.getFirst();
+        for(Point point : points)
+        {
+            if (point.distance(head) < closestPoint.distance(head))
+                closestPoint = point;
+        }
+        return closestPoint;
     }
 }
