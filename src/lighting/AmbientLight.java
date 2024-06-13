@@ -2,9 +2,8 @@ package lighting;
 
 import primitives.*;
 
-public class AmbientLight {
-    // Fill light intensity
-    private final Color intensity;
+public class AmbientLight extends  Light {
+
 
     public static final AmbientLight NONE = new AmbientLight(Color.BLACK, 0);
 
@@ -14,7 +13,7 @@ public class AmbientLight {
      * @param kA to the attenuation coefficient of the fill light
      */
     public AmbientLight(Color iA, Double3 kA) {
-        intensity = iA.scale(kA);
+        super(iA.scale(kA));
     }
 
     /**
@@ -23,14 +22,8 @@ public class AmbientLight {
      * @param kA to the attenuation coefficient of the fill light
      */
     public AmbientLight(Color iA, double kA) {
-        intensity = iA.scale(kA);
+        super(iA.scale(kA));
     }
 
-    /**
-     *
-     * @return the intensity
-     */
-    public Color getIntensity() {
-        return intensity;
-    }
+
 }

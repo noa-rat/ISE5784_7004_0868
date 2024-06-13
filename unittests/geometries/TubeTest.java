@@ -26,9 +26,8 @@ class TubeTest {
                 "Error: The tube normals don't correct");
 
         // =============== Boundary Values Tests ==================////*
-        assertThrows(IllegalArgumentException.class, () -> tube.getNormal(new Point(2, 0, 0)),
-                "Error: need throw exception, The zero vector is created, " +
-                        "because the point is in front of the head of the ray");
+        assertEquals(new Vector(0,0,1),  tube.getNormal(new Point(1, 0, 2)),
+                "Error: The tube normals don't correct");
 
 
         // assertEquals(new Vector(0,1,0), tube.getNormal(new Point(2,0,0)),

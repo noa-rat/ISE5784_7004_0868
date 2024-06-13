@@ -8,6 +8,9 @@ import geometries.Triangle;
 import org.junit.jupiter.api.Test;
 import primitives.Point;
 import primitives.*;
+import geometries.Intersectable.GeoPoint;
+import scene.Scene;
+
 
 import java.util.LinkedList;
 import java.util.List;
@@ -22,10 +25,10 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 class integrationTest {
 
 private int AllIntersectionsGeometry(Intersectable geometry,Camera camera) {
-    List<Point>result=new LinkedList<Point>();
+    List<GeoPoint>result=new LinkedList<GeoPoint>();
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
-            var list = geometry.findIntersections(camera.constructRay(3, 3, j, i));
+            var list = geometry.findGeoIntersectionsHelper(camera.constructRay(3, 3, j, i));
             if (list != null) {
                 result.addAll(list);
             }
@@ -48,6 +51,8 @@ private int AllIntersectionsGeometry(Intersectable geometry,Camera camera) {
             .setVpDistance(1)
             .setLocation(Point.ZERO)
             .setVpSize(3,3)
+            .setImageWriter(new ImageWriter("image",3,3))
+            .setRayTracer(new SimpleRayTracer(new Scene("scene")))
             .build();
     Sphere sphere=new Sphere(1,new Point(0,0,-3));
 
@@ -60,6 +65,8 @@ private int AllIntersectionsGeometry(Intersectable geometry,Camera camera) {
                 .setVpDistance(1)
                 .setLocation(new Point(0,0,0.5))
                 .setVpSize(3,3)
+                .setImageWriter(new ImageWriter("image",3,3))
+                .setRayTracer(new SimpleRayTracer(new Scene("scene")))
                 .build();
         sphere=new Sphere(2.5,new Point(0,0,-2.5));
 
@@ -71,6 +78,8 @@ private int AllIntersectionsGeometry(Intersectable geometry,Camera camera) {
                 .setVpDistance(1)
                 .setLocation(new Point(0,0,0.5))
                 .setVpSize(3,3)
+                 .setImageWriter(new ImageWriter("image",3,3))
+                 .setRayTracer(new SimpleRayTracer(new Scene("scene")))
                 .build();
          sphere=new Sphere(2,new Point(0,0,-2));
 
@@ -82,6 +91,8 @@ private int AllIntersectionsGeometry(Intersectable geometry,Camera camera) {
                 .setVpDistance(1)
                 .setLocation(Point.ZERO)
                 .setVpSize(3,3)
+                 .setImageWriter(new ImageWriter("image",3,3))
+                 .setRayTracer(new SimpleRayTracer(new Scene("scene")))
                 .build();
         sphere=new Sphere(4,new Point(0,0,-0.5));
 
@@ -94,6 +105,8 @@ private int AllIntersectionsGeometry(Intersectable geometry,Camera camera) {
                 .setVpDistance(1)
                 .setLocation(Point.ZERO)
                 .setVpSize(3,3)
+                 .setImageWriter(new ImageWriter("image",3,3))
+                 .setRayTracer(new SimpleRayTracer(new Scene("scene")))
                 .build();
          sphere=new Sphere(0.5,new Point(0,0,1));
 
@@ -115,6 +128,8 @@ private int AllIntersectionsGeometry(Intersectable geometry,Camera camera) {
                 .setVpDistance(1)
                 .setLocation(Point.ZERO)
                 .setVpSize(3,3)
+                 .setImageWriter(new ImageWriter("image",3,3))
+                 .setRayTracer(new SimpleRayTracer(new Scene("scene")))
                 .build();
         Triangle triangle=new Triangle(new Point(0,1,-2),
                 new Point(-1,-1,-2),
@@ -147,6 +162,9 @@ private int AllIntersectionsGeometry(Intersectable geometry,Camera camera) {
                 .setVpDistance(1)
                 .setLocation(Point.ZERO)
                 .setVpSize(3,3)
+                .setImageWriter(new ImageWriter("image",3,3))
+                .setRayTracer(new SimpleRayTracer(new Scene("scene")))
+
                 .build();
         Plane plane=new Plane(new Point(0,0,-2),new Vector(0,0,-1));
 
