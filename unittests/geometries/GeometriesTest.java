@@ -34,26 +34,27 @@ class GeometriesTest {
                 new Point(1, 1, 0)
         );
         Geometries geometries1 = new Geometries(plane,sphere, triangle);
-        var result=geometries1.findIntersections(new Ray(new Point(0,1.1,1),new Vector(0,0,-1)));
+        var result=geometries1.findGeoIntersectionsHelper(new Ray(new Point(0,1.1,1),new Vector(0,0,-1)));
         assertEquals(2,result.size(),"Error:The rey should intersect some geometric bodies");
 
 
         // =============== Boundary Values Tests ==================
         // The bodies collection is empty
          geometries1 = new Geometries();
-        result=geometries1.findIntersections(
+        result=geometries1.findGeoIntersectionsHelper(
                 new Ray(new Point(30, 30, 30), new Vector(1, 1, 1)));
-        assertEquals(0,result.size(),
+        assertNull(result,
                 "Error: there are not geometies in the list");
 
         // there are not intersection points
         Geometries geometries2 = new Geometries(plane,sphere, triangle);
-        assertNull(geometries2.findIntersections(
+        assertNull(geometries2.findGeoIntersectionsHelper(
                         new Ray(new Point(30, 30, 30), new Vector(1, 1, 1))),
                 "Error: there are not intersection points");
 
         //All bodies are cut
-        result=geometries1.findIntersections(new Ray(new Point(0.5,0.9,-0.5),new Vector(0,0,1)));
+        geometries1= new Geometries(plane,sphere, triangle);
+        result=geometries1.findGeoIntersectionsHelper(new Ray(new Point(0.2,0.7,-0.5),new Vector(0,0,1)));
         assertEquals(3,result.size()," Error: The rey should intersect all geometric bodies");
 
 
@@ -72,7 +73,7 @@ class GeometriesTest {
                 new Point(-1, -2, -5)
         );
         geometries2 = new Geometries(plane,sphere, triangle);
-         result = geometries2.findIntersections(
+         result = geometries2.findGeoIntersectionsHelper(
                 new Ray(new Point(0, 0, 2), new Vector(0, 0, 1)));
         assertEquals(1, result.size(), "Error: ne geometry is cut, one intersection point");
     }

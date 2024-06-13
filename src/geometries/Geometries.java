@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * a class for the collection of geometric bodies in the scene
  */
-public class Geometries implements Intersectable{
+public class Geometries extends Intersectable{
     private final List<Intersectable> listGeometries =  new LinkedList<Intersectable>();
 
     public Geometries() { }
@@ -28,11 +28,11 @@ public class Geometries implements Intersectable{
     }
 
     @Override
-    public List<Point> findIntersections(Ray ray) {
-        List<Point> listOfPoints=new LinkedList<Point>();
+    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray){
+        List<GeoPoint> listOfPoints=new LinkedList<GeoPoint>();
         for(Intersectable geometry:listGeometries)
         {
-            var result=geometry.findIntersections(ray);
+            var result=geometry.findGeoIntersectionsHelper( ray);
             if(result!=null)
             {
                 listOfPoints.addAll(result);

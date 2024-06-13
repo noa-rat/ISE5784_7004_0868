@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Plane implements Geometry {
+public class Plane extends Geometry {
     private final Point q;
     private final Vector normal;
 
@@ -54,7 +54,7 @@ public class Plane implements Geometry {
      * @return list of points of intersection with the plane
      */
     @Override
-    public List<Point> findIntersections(Ray ray) {
+    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
         // Denominator מכנה
         // numerator מונה
         if (q.equals(ray.getHead())) {
@@ -72,7 +72,8 @@ public class Plane implements Geometry {
             return null;
         } else {
             Point point = (ray.getPoint(t));
-            return  List.of(point);
+            GeoPoint geoPoint=new GeoPoint(this,point);
+            return  List.of(geoPoint);
         }
     }
 }
