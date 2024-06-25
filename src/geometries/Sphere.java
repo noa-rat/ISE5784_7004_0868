@@ -42,7 +42,7 @@ public class Sphere extends RadialGeometry {
         double tm = (ray.getDirection()).dotProduct(u);
         if ((tm * tm) > u.lengthSquared())
             return null;
-        if(Util.alignZero(tm)<0&&u.length()>=radius)
+        if(Util.alignZero(tm)<0 && u.length()>=radius)
             return null;
 
         double d = Math.sqrt(u.lengthSquared() - (tm * tm));

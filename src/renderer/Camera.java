@@ -149,7 +149,7 @@ public class Camera implements Cloneable{
      */
     private void castRay(int nX, int nY, int x, int y) {
         ///////////////////////////////////////
-        Ray ray = constructRay(nX, nY, y, x);
+        Ray ray = constructRay(nX, nY, x, y);
         ///////////////////////////////////////
         Color color = rayTracer.traceRay(ray);
         imageWriter.writePixel(x, y, color);
@@ -161,11 +161,9 @@ public class Camera implements Cloneable{
      * @param color - the color of the grid
      */
     public Camera printGrid(int interval, Color color) {
-        for (int x = 0; x < imageWriter.getNx(); x++)
-        {
-            for(int y = 0; y < imageWriter.getNy(); y++)
-            {
-                if (x % interval == 0 || y % interval == 0)
+        for (int x = 0; x < imageWriter.getNx();x++) {
+            for(int y = 0; y < imageWriter.getNy(); y++) {
+                if(x%interval==0||y%interval==0)
                     imageWriter.writePixel(x, y, color);
             }
         }

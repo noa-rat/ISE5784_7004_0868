@@ -80,42 +80,42 @@ class PlaneTest {
         );
 
         // the ray intersects tha plane
-        var result = plane.findGeoIntersectionsHelper(new Ray(new Point(0, 0, -1), new Vector(0, 1, 1)));
+        var result = plane.findGeoIntersections(new Ray(new Point(0, 0, -1), new Vector(0, 1, 1)));
         assertEquals(1,
                 result.size(),
                 "Error: there should be one intersection points");
 
         // the ray doesn't intersects the plane
-        assertNull(plane.findGeoIntersectionsHelper(new Ray(new Point(0, 0, -1), new Vector(0, -1, -1))),
+        assertNull(plane.findGeoIntersections(new Ray(new Point(0, 0, -1), new Vector(0, -1, -1))),
                 "Error: there are not intersection points");
 
         // =============== Boundary Values Tests ==================
         // ??? - הקרן על המישור, מה צריכה להיות התוצאה
-        assertNull(plane.findGeoIntersectionsHelper(new Ray(new Point(3, 4, 0), new Vector(1, 1, 0))),
+        assertNull(plane.findGeoIntersections(new Ray(new Point(3, 4, 0), new Vector(1, 1, 0))),
                 "Error: there are not intersection points");
 
         // the ray is parallel and not on the plane
-        assertNull(plane.findGeoIntersectionsHelper(new Ray(new Point(3, 4, 1), new Vector(1, 1, 0))),
+        assertNull(plane.findGeoIntersections(new Ray(new Point(3, 4, 1), new Vector(1, 1, 0))),
                 "Error: there are not intersection points");
 
         // the ray is perpendicular and after the plane
-        assertNull(plane.findGeoIntersectionsHelper(new Ray(new Point(3, 4, 1), new Vector(0, 0, 1))),
+        assertNull(plane.findGeoIntersections(new Ray(new Point(3, 4, 1), new Vector(0, 0, 1))),
                 "Error: there are not intersection points");
 
         // the ray is perpendicular to the plane
-        assertNull(plane.findGeoIntersectionsHelper(new Ray(new Point(3, 4, 0), new Vector(0, 0, 1))),
+        assertNull(plane.findGeoIntersections(new Ray(new Point(3, 4, 0), new Vector(0, 0, 1))),
                 "Error: there are not intersection points");
 
         // the ray is perpendicular and in front of the plane
-        result = plane.findGeoIntersectionsHelper(new Ray(new Point(3, 4, -1), new Vector(0, 0, 1)));
+        result = plane.findGeoIntersections(new Ray(new Point(3, 4, -1), new Vector(0, 0, 1)));
         assertEquals(1, result.size(), "Error: there are not intersection points");
 
         // the ray starts at the same point that the plane is represented by
-        assertNull(plane.findGeoIntersectionsHelper(new Ray(new Point(1, 0, 0), new Vector(0, 1, 1))),
+        assertNull(plane.findGeoIntersections(new Ray(new Point(1, 0, 0), new Vector(0, 1, 1))),
                 "Error: there should be one intersection points");
 
         // the ray starts on the plane
-        assertNull(plane.findGeoIntersectionsHelper(new Ray(new Point(3, 4, 0), new Vector(0, 1, 1))),
+        assertNull(plane.findGeoIntersections(new Ray(new Point(3, 4, 0), new Vector(0, 1, 1))),
                 "Error: there should be one intersection points");
     }
 

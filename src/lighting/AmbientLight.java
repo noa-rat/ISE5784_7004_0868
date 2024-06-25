@@ -3,9 +3,7 @@ package lighting;
 import primitives.*;
 
 public class AmbientLight extends  Light {
-
-
-    public static final AmbientLight NONE = new AmbientLight(Color.BLACK, 0);
+    public static final AmbientLight NONE = new AmbientLight(Color.BLACK, Double3.ZERO);
 
     /**
      * constructor
@@ -17,12 +15,10 @@ public class AmbientLight extends  Light {
     }
 
     /**
-     * constructor
-     * @param iA to the Original fill light
-     * @param kA to the attenuation coefficient of the fill light
+     * default constructor
      */
-    public AmbientLight(Color iA, double kA) {
-        super(iA.scale(kA));
+    public AmbientLight() {
+        super(Color.BLACK);
     }
 
 
