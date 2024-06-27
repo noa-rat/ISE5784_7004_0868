@@ -13,11 +13,11 @@ import static primitives.Util.isZero;
  */
 public class PointTest {
 
-    private Point p1 = new Point(1, 2, 3);
-    private Point p2 = new Point(2, 4, 6);
-    private Point p3 = new Point(2, 4, 5);
-    private Vector v1 = new Vector(1, 2, 3);
-    private Vector v1Opposite = new Vector(-1, -2, -3);
+    private final Point p1 = new Point(1, 2, 3);
+    private final Point p2 = new Point(2, 4, 6);
+    private final Point p3 = new Point(2, 4, 5);
+    private final Vector v1 = new Vector(1, 2, 3);
+    private final Vector v1Opposite = new Vector(-1, -2, -3);
 
     private final double DELTA = 0.000001;
 

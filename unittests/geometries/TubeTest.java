@@ -33,14 +33,5 @@ class TubeTest {
         // assertEquals(new Vector(0,1,0), tube.getNormal(new Point(2,0,0)),
         //        "Error: need throw exception, The zero vector is created, " +
         //        "because the point is in front of the head of the ray");
-
-
-        // p = (2,0,0)
-        // p0 = (1,0,0)
-        // v = (0,1,0)
-        // p - p0 = (1,0,0)
-        // t = (0,1,0)x(1,0,0) = 0
-        // o = (1,0,0) + 0 x (0,1,0)
-        // p - o = (1,0,0)
     }
 }

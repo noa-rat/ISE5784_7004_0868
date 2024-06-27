@@ -3,9 +3,7 @@ package lighting;
 import primitives.*;
 
 public class AmbientLight extends  Light {
-
-
-    public static final AmbientLight NONE = new AmbientLight(Color.BLACK, 0);
+    public static final AmbientLight NONE = new AmbientLight(Color.BLACK, Double3.ZERO);
 
     /**
      * constructor
@@ -23,6 +21,13 @@ public class AmbientLight extends  Light {
      */
     public AmbientLight(Color iA, double kA) {
         super(iA.scale(kA));
+    }
+
+    /**
+     * default constructor
+     */
+    public AmbientLight() {
+        super(Color.BLACK);
     }
 
 
