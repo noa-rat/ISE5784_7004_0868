@@ -4,31 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="580921d5-819b-4cc3-b9af-dab1a6cd6754" name="Changes" comment="continue stage 4">
-      <change afterPath="$PROJECT_DIR$/src/lighting/Light.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unittests/renderer/LightsTest.java" afterDir="false" />
+    <list default="true" id="580921d5-819b-4cc3-b9af-dab1a6cd6754" name="Changes" comment="a">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Cylinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Cylinder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Geometries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Geometries.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Geometry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Geometry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Intersectable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Intersectable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Plane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Plane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Polygon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Polygon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/RadialGeometry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/RadialGeometry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Sphere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Sphere.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Triangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Triangle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Tube.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Tube.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lighting/AmbientLight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lighting/AmbientLight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/primitives/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Ray.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/SimpleRayTracer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/SimpleRayTracer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/geometries/GeometriesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/GeometriesTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/geometries/PlaneTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/PlaneTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/geometries/SphereTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/SphereTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/geometries/TriangleTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/TriangleTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/geometries/TubeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/TubeTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/primitives/RayTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/primitives/RayTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/renderer/RendererTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/renderer/RendererTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/renderer/integrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/renderer/integrationTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,48 +53,48 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Application.Main.executor": "Run",
-    "Downloaded.Files.Path.Enabled": "true",
-    "JUnit.All in ISE5784_7004_0868.executor": "Run",
-    "JUnit.CameraTest.executor": "Run",
-    "JUnit.CameraTest.testConstructRay.executor": "Run",
-    "JUnit.CylinderTest.testGetNormal.executor": "Run",
-    "JUnit.ImageWriterTest.testWritePixel.executor": "Run",
-    "JUnit.PlaneTest.findIntersections.executor": "Run",
-    "JUnit.PointTest.testSubtract.executor": "Run",
-    "JUnit.RayTest.testFindClosestPoint.executor": "Run",
-    "JUnit.RenderTest.executor": "Run",
-    "JUnit.RendererTest.executor": "Run",
-    "JUnit.SphereTest.findIntersections.executor": "Run",
-    "JUnit.TriangleTest.testfindIntersections.executor": "Run",
-    "JUnit.TubeTest.executor": "Run",
-    "JUnit.TubeTest.testGetNormal.executor": "Run",
-    "JUnit.geometries in ISE5784_7004_0868.executor": "Run",
-    "JUnit.integrationTest.testTriangle.executor": "Run",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "fileTemplates",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
+    &quot;JUnit.All in ISE5784_7004_0868.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CameraTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CameraTest.testConstructRay.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CylinderTest.testGetNormal.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ImageWriterTest.testWritePixel.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PlaneTest.findIntersections.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PointTest.testSubtract.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.RayTest.testFindClosestPoint.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.RenderTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.RendererTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SphereTest.findIntersections.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TriangleTest.testfindIntersections.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TubeTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TubeTest.testGetNormal.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.geometries in ISE5784_7004_0868.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.integrationTest.testTriangle.executor&quot;: &quot;Run&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;fileTemplates&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -230,6 +207,7 @@
       <workItem from="1717585515826" duration="7000" />
       <workItem from="1717585565432" duration="17000" />
       <workItem from="1717585626846" duration="7008000" />
+      <workItem from="1718362250737" duration="3000" />
     </task>
     <task id="LOCAL‎-00001" summary="half stage 1 (primitives)">
       <option name="closed" value="true" />
@@ -380,7 +358,7 @@
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/geometries/Intersectable.java</url>
           <line>11</line>
-          <properties class="Intersectable" method="findIntersections">
+          <properties class="geometries.Intersectable">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
