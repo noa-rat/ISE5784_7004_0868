@@ -66,7 +66,7 @@ public class ShadowTest {
     @Test
     public void sphereTriangleMove2() {
         sphereTriangleHelper("shadowSphereTriangleMove2", //
-                new Triangle(new Point(-45, -15, 0), new Point(-15, -45, 0), new Point(-43, -43, -4)), //
+                new Triangle(new Point(-48, -18, 0), new Point(-18, -48, 0), new Point(-46, -46, -4)), //
                 new Point(-100, -100, 200));
     }
 
@@ -76,7 +76,7 @@ public class ShadowTest {
     public void sphereTriangleSpot1() {
         sphereTriangleHelper("shadowSphereTriangleSpot1", //
                 new Triangle(new Point(-70, -40, 0), new Point(-40, -70, 0), new Point(-68, -68, -4)), //
-                new Point(-100, -100, 200));
+                new Point(-90, -90, 125));
    }
 
 
@@ -86,7 +86,7 @@ public class ShadowTest {
     public void sphereTriangleSpot2() {
         sphereTriangleHelper("shadowSphereTriangleSpot2", //
                 new Triangle(new Point(-70, -40, 0), new Point(-40, -70, 0), new Point(-68, -68, -4)), //
-                new Point(-100, -100, 200));
+                new Point(-77, -77, 75));
     }
 
     /** Produce a picture of a two triangles lighted by a spot light with a Sphere
