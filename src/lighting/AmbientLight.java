@@ -15,6 +15,15 @@ public class AmbientLight extends  Light {
     }
 
     /**
+     * constructor
+     * @param iA to the Original fill light
+     * @param kA to the attenuation coefficient of the fill light
+     */
+    public AmbientLight(Color iA, double kA) {
+        super(iA.scale(kA));
+    }
+
+    /**
      * default constructor
      */
     public AmbientLight() {

@@ -1,6 +1,7 @@
 package renderer;
 
 import lighting.LightSource;
+import lighting.PointLight;
 import primitives.*;
 import scene.Scene;
 import geometries.Intersectable.GeoPoint;
@@ -11,7 +12,9 @@ import java.util.List;
  * realizes the class RayTracerBase to track each ray
  * and determines the color of the pixel it hits
  */
+
 public class SimpleRayTracer extends RayTracerBase{
+    private static final double DELTA = 0.1;
     /**
      * constructor
      * @param scene to initialize the field scene
@@ -61,7 +64,7 @@ public class SimpleRayTracer extends RayTracerBase{
             Vector l=lightSource.getL(gp.point);
             double nl=Util.alignZero(n.dotProduct(l));
 
-            if(nl*nv>0) {
+            if(nl*nv>0&&unshaded(gp,lightSource,l,n,nl)){
                 Color iL=lightSource.getIntensity(gp.point);
                  color =color.add(calcDiffusive(material,nl,iL))
                                 .add(calcSpecular(material,n,l,nl,v,iL));
@@ -100,6 +103,31 @@ public class SimpleRayTracer extends RayTracerBase{
             return Color.BLACK;
 
     }
+
+    /**
+     * The function checks that there is no shading
+     * @param gp point of intersection with the body
+     * @param l The vector from the light orientation to the intersection point
+     * @param n normal to the body at a point
+     * @return Is there a shadow
+     */
+    private boolean unshaded(GeoPoint gp,LightSource light, Vector l, Vector n,double nl){
+        Vector lightDirection=l.scale(-1);
+        Vector deltaVector=n.scale(nl<0 ? DELTA : -DELTA);
+        Point p=gp.point.add(deltaVector);
+        Ray ray=new Ray(p,lightDirection);
+        List<GeoPoint> intersections=scene.geometries.findGeoIntersections(ray);
+        if(intersections==null)return true;
+        for (GeoPoint geoPoint : intersections) {
+            if (light.getDistance(p)>p.distance(geoPoint.point))
+                    return false;
+            }
+        return true;
+
+    }
+
+
+
 }
 
 

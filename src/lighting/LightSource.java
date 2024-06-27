@@ -13,9 +13,16 @@ public interface LightSource {
     public Color getIntensity(Point p);
 
     /**
-     *
-     * @param p
-     * @return
+     *The vector from the light towards the point of intersection with the body
+     * @param p  intersection point
+     * @return vector
      */
     public Vector getL(Point p);
+
+    /**
+     * The function calculates the distance between the light source and the point
+     * @param point on the geometry
+     * @return the distance
+     */
+    public double getDistance(Point point);
 }
