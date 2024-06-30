@@ -69,6 +69,12 @@ public class Ray {
         return points == null || points.isEmpty() ? null
                 : findClosestGeoPoint(points.stream().map(p -> new GeoPoint(null, p)).toList()).point;
     }
+
+    /**
+     * Finds the GeoPoint from the list that is closest to the corner
+     * @param points - list of GeoPoints
+     * @return the GeoPoint from the list that closest to the ray
+     */
     public GeoPoint findClosestGeoPoint(List<GeoPoint> points)
     {
         if (points.isEmpty())

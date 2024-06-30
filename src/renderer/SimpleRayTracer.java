@@ -13,8 +13,11 @@ import java.util.List;
  * and determines the color of the pixel it hits
  */
 
-public class SimpleRayTracer extends RayTracerBase{
+public class SimpleRayTracer extends RayTracerBase {
     private static final double DELTA = 0.1;
+    private static final int MAX_CALC_COLOR_LEVEL = 10;
+    private static final double MIN_CALC_COLOR_K = 0.001;
+
     /**
      * constructor
      * @param scene to initialize the field scene
@@ -39,10 +42,11 @@ public class SimpleRayTracer extends RayTracerBase{
      * @param ray - to calculate its color
      * @return the color of the point
      */
-    private Color calcColor(GeoPoint  intersection,Ray ray) {
+    private Color calcColor(GeoPoint intersection,Ray ray) {
         return (scene.ambientLight.getIntensity())
                 .add(intersection.geometry.getEmission())
-                .add(calcLocalEffects(intersection,ray));
+                .add(calcLocalEffects(intersection,ray))
+                .add(calcGlobalEffects(gp, ray));
     }
 
     /**
@@ -126,7 +130,46 @@ public class SimpleRayTracer extends RayTracerBase{
 
     }
 
+    private Color calcGlobalEffects(GeoPoint gp, Ray ray) {
+        Vector n = gp.geometry.getNormal(gp.point);
+        Material material = gp.geometry.getMaterial();
+        return calcGlobalEffects(constructRefractedRay(gp, ray), material.kT)
+                .add(calcGlobalEffects(constructRelractedRay(gp, ray), material.kR));
+    }
 
+    private Color calcGlobalEffects(Ray ray, Double3 kx) {
+        List<GeoPoint> intersections = scene.geometries.findGeoIntersections(ray);
+        GeoPoint gp = ray.findClosestGeoPoint(intersections);
+        return (gp == null ? scene.background : calcColor(gp,ray).scale(kx));
+    }
+
+    /**
+     * Builds a transparency ray
+     * @param gp - the cutting point
+     * @param ray - The cutting ray
+     * @return transparency ray
+     */
+    private Ray constructRefractedRay(GeoPoint gp, Ray ray) {
+        Vector n = gp.geometry.getNormal(gp.point);
+        Vector v = ray.getDirection();
+        double vn = v.dotProduct(n);
+        double tetaI = Math.acos(vn);
+
+    }
+
+    /**
+     * Builds a reflection ray
+     * @param gp - the cutting point
+     * @param ray - The cutting ray
+     * @return reflection ray
+     */
+    private Ray constructRelractedRay(GeoPoint gp, Ray ray) {
+        Vector n = gp.geometry.getNormal(gp.point);
+        Vector v = ray.getDirection();
+        double vn = v.dotProduct(n);
+        Vector r = v.add(n.scale(-2 * vn));
+        return new Ray(gp.point, r);
+    }
 
 }
 

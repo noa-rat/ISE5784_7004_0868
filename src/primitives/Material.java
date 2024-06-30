@@ -6,8 +6,17 @@ public class Material {
     public int nShininess=0;
 
     /**
+     * Attenuation coefficient of transparency
+     */
+    public Double3 kT = Double3.ZERO;
+    /**
+     * reflection attenuation coefficient
+     */
+    public Double3 kR = Double3.ZERO;
+
+    /**
      * setter
-     * @param kD to put the filde kD;
+     * @param kD to put the filed kD;
      * @return Material
      */
     public Material setkD(double kD) {
@@ -16,7 +25,7 @@ public class Material {
     }
     /**
      * setter
-     * @param kS to put the filde kS;
+     * @param kS to put the filed kS;
      * @return Material
      */
 
@@ -27,7 +36,7 @@ public class Material {
 
     /**
      * setter
-     * @param kD to put the filde kD;
+     * @param kD to put the filed kD;
      * @return Material
      */
     public Material setkD(Double3 kD) {
@@ -36,7 +45,7 @@ public class Material {
     }
     /**
      * setter
-     * @param kS to put the filde kS;
+     * @param kS to put the filed kS;
      * @return Material
      */
 
@@ -49,11 +58,51 @@ public class Material {
 
     /**
      * setter
-     * @param nShininess to put the filde nShininess;
+     * @param nShininess to put the filed nShininess;
      * @return Material
      */
     public Material setnShininess(int nShininess) {
         this.nShininess = nShininess;
+        return this;
+    }
+
+    /**
+     * setter
+     * @param kT to put the filed kT
+     * @return Material
+     */
+    public Material setkT(Double3 kT) {
+        this.kT = kT;
+        return this;
+    }
+
+    /**
+     * setter
+     * @param kR to put the filed kR
+     * @return Material
+     */
+    public Material setkR(Double3 kR) {
+        this.kR = kR;
+        return this;
+    }
+
+    /**
+     * setter
+     * @param kT to put the filed kT
+     * @return Material
+     */
+    public Material setkT(double kT) {
+        this.kT = new Double3(kT);
+        return this;
+    }
+
+    /**
+     * setter
+     * @param kR to put the filed kR
+     * @return Material
+     */
+    public Material setkR(double kR) {
+        this.kR = new Double3(kR);
         return this;
     }
 }
