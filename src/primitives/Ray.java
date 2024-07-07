@@ -7,6 +7,7 @@ import geometries.Intersectable.GeoPoint;
 public class Ray {
     private final Point head;
     private final Vector direction;
+    private static final double DELTA = 0.1;
 
     /**
      * @param head      to the head of the ray
@@ -48,20 +49,20 @@ public class Ray {
 
     /**
      * The method calculates a point on the ray line at a given distance from the ray head
+     *
      * @param t The given distance from the head of the ray
      * @return point on thr ray
      */
-    public Point getPoint(double t)
-    {
-        if(Util.isZero(t))
-        {
-           return head;
+    public Point getPoint(double t) {
+        if (Util.isZero(t)) {
+            return head;
         }
         return head.add(direction.scale(t));
     }
 
     /**
      * Finds the point from the list that is closest to the corner
+     *
      * @param points - list of points
      * @return the point from the list that closest to the ray
      */
@@ -72,22 +73,31 @@ public class Ray {
 
     /**
      * Finds the GeoPoint from the list that is closest to the corner
+     *
      * @param points - list of GeoPoints
      * @return the GeoPoint from the list that closest to the ray
      */
-    public GeoPoint findClosestGeoPoint(List<GeoPoint> points)
-    {
+    public GeoPoint findClosestGeoPoint(List<GeoPoint> points) {
         if (points.isEmpty())
             return null;
 
         GeoPoint closestPoint = points.getFirst();
-        for(GeoPoint geoPoint : points)
-        {
+        for (GeoPoint geoPoint : points) {
             if (geoPoint.point.distance(head) < closestPoint.point.distance(head))
                 closestPoint = geoPoint;
         }
         return closestPoint;
 
     }
+
+
+    public Ray movingRayHead(Vector n)
+    {
+        double dp=n.dotProduct(direction);
+        Vector deltaVector = n.scale(dp < 0 ? DELTA : -DELTA);
+        Point moveP =head.add(deltaVector);
+        return new Ray(moveP, direction);
+    }
+
 
 }
