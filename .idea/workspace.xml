@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="580921d5-819b-4cc3-b9af-dab1a6cd6754" name="Changes" comment="b">
+    <list default="true" id="580921d5-819b-4cc3-b9af-dab1a6cd6754" name="Changes" comment="half stage 7">
+      <change afterPath="$PROJECT_DIR$/unittests/renderer/ReflectionRefractionTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/primitives/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Ray.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/SimpleRayTracer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/SimpleRayTracer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +110,7 @@
       <recent name="geometries" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ShadowTest">
+  <component name="RunManager" selected="JUnit.All in ISE5784_7004_0868">
     <configuration name="All in ISE5784_7004_0868" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5784_7004_0868" />
       <option name="PACKAGE_NAME" value="" />
@@ -176,21 +179,13 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in ISE5784_7004_0868" />
         <item itemvalue="JUnit.ShadowTest" />
         <item itemvalue="JUnit.renderer in ISE5784_7004_0868" />
-        <item itemvalue="JUnit.All in ISE5784_7004_0868" />
         <item itemvalue="JUnit.geometries in ISE5784_7004_0868" />
         <item itemvalue="JUnit.CameraTest" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -216,7 +211,6 @@
       <workItem from="1717585515826" duration="7000" />
       <workItem from="1717585565432" duration="17000" />
       <workItem from="1717585626846" duration="7008000" />
-      <workItem from="1720017385645" duration="1058000" />
     </task>
     <task id="LOCAL‎-00001" summary="half stage 1 (primitives)">
       <option name="closed" value="true" />
@@ -362,23 +356,7 @@
       <option name="project" value="LOCAL‎" />
       <updated>1719493823370</updated>
     </task>
-    <task id="LOCAL‎-00019" summary="continue2 stage 7">
-      <option name="closed" value="true" />
-      <created>1719497582332</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL‎-00019" />
-      <option name="project" value="LOCAL‎" />
-      <updated>1719497582332</updated>
-    </task>
-    <task id="LOCAL‎-00020" summary="b">
-      <option name="closed" value="true" />
-      <created>1720017405795</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL‎-00020" />
-      <option name="project" value="LOCAL‎" />
-      <updated>1720017405795</updated>
-    </task>
-    <option name="localTasksCounter" value="21" />
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -402,9 +380,7 @@
     <MESSAGE value="half stage 6" />
     <MESSAGE value="stage 6" />
     <MESSAGE value="PRO7.1" />
-    <MESSAGE value="continue2 stage 7" />
-    <MESSAGE value="b" />
-    <option name="LAST_COMMIT_MESSAGE" value="b" />
+    <option name="LAST_COMMIT_MESSAGE" value="PRO7.1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
