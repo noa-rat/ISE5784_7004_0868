@@ -16,7 +16,6 @@ import java.util.List;
 public class SimpleRayTracer extends RayTracerBase {
     private static final int MAX_CALC_COLOR_LEVEL = 10;
     private static final double MIN_CALC_COLOR_K = 0.001;
-
     /**
      * constructor
      * @param scene to initialize the field scene
@@ -32,20 +31,25 @@ public class SimpleRayTracer extends RayTracerBase {
         return calcColor(closestPoint,ray);
     }
 
-    private Color calcColor(GeoPoint gp, Ray ray) {
-        Double3 initialK = new Double3(MIN_CALC_COLOR_K);
-        return calcColor(gp, ray, MAX_CALC_COLOR_LEVEL, initialK)
-                .add(scene.ambientLight.getIntensity());}
-
-
     /**
      * Calculates the color of a pixel at a point
      * @param gp - to calculate its color
      * @param ray - to calculate its color
      * @return the color of the point
      */
+    private Color calcColor(GeoPoint gp, Ray ray) {
+        return calcColor(gp, ray, MAX_CALC_COLOR_LEVEL, Double3.ONE)
+                .add(scene.ambientLight.getIntensity());
+    }
+
+    /**
+     * helper function to calcColor
+     * @param gp - to calculate its color
+     * @param ray - to calculate its color
+     * @return Color
+     */
     private Color calcColor(GeoPoint gp,Ray ray, int level, Double3 k) {
-        Color color = calcLocalEffects(gp,ray).add(gp.geometry.getEmission());
+        Color color = calcLocalEffects(gp,ray, k); //.add(gp.geometry.getEmission());
         return 1 == level ? color : color.add(calcGlobalEffects(gp, ray, level, k));}
 
     /**
@@ -65,25 +69,25 @@ public class SimpleRayTracer extends RayTracerBase {
      * @param ray The ray that cuts the point
      * @return the color of the point
      */
-    private Color calcLocalEffects(GeoPoint gp,Ray ray){
-        Vector n=gp.geometry.getNormal(gp.point);
-        Vector v=ray.getDirection();
-        double nv=Util.alignZero(n.dotProduct(v));
-        Color color=Color.BLACK;
-        if(nv==0)
+    private Color calcLocalEffects(GeoPoint gp,Ray ray, Double3 k){
+        Vector n = gp.geometry.getNormal(gp.point);
+        Vector v = ray.getDirection();
+        double nv = Util.alignZero(n.dotProduct(v));
+        Color color = gp.geometry.getEmission();
+        if(nv == 0)
             return color;
-        Material material=gp.geometry.getMaterial();
-        for(LightSource lightSource :scene.lights)
-        {
-            Vector l=lightSource.getL(gp.point);
-            double nl=Util.alignZero(n.dotProduct(l));
-
-            if(nl*nv>0 && unshaded(gp,lightSource,l,n,nl)){
-                Color iL = lightSource.getIntensity(gp.point);
-                 color = color.add(calcDiffusive(material,nl,iL))
-                                .add(calcSpecular(material,n,l,nl,v,iL));
+        Material material = gp.geometry.getMaterial();
+        for(LightSource lightSource : scene.lights) {
+            Vector l = lightSource.getL(gp.point);
+            double nl = Util.alignZero(n.dotProduct(l));
+            if(nl * nv > 0) { // && unshaded(gp,lightSource,l,n,nl)) {
+                Double3 ktr = transparency(gp, lightSource, l, n);
+                if (!(ktr.product(k).lowerThan(MIN_CALC_COLOR_K))) {
+                    Color iL = lightSource.getIntensity(gp.point).scale(ktr);
+                    color = color.add(calcDiffusive(material,nl,iL))
+                            .add(calcSpecular(material,n,l,nl,v,iL));
+                }
             }
-
         }
         return color;
     }
@@ -100,7 +104,7 @@ public class SimpleRayTracer extends RayTracerBase {
     }
 
     /**
-     *Helper function for  calculate Specular
+     * Helper function for  calculate Specular
      * @param material of the gp
      * @param n normal
      * @param l the ray from lightsource
@@ -108,14 +112,13 @@ public class SimpleRayTracer extends RayTracerBase {
      * @param v the ray from camera
      * @return Double3 to the level of influence of Specular
      */
-    private Color calcSpecular (Material material, Vector n, Vector l, double nl,Vector v,Color iL){
-        Vector r=l.add(n.scale(-2*nl));
-        double vr=-(Util.alignZero(v.dotProduct(r)));
-        if(vr>0)
+    private Color calcSpecular (Material material, Vector n, Vector l, double nl, Vector v, Color iL){
+        Vector r = l.subtract(n.scale(2 * nl));
+        double vr = -(Util.alignZero(v.dotProduct(r)));
+        if (vr > 0)
             return iL.scale(material.kS.scale(Math.pow(vr,material.nShininess)));
         else
             return Color.BLACK;
-
     }
 
     /**
@@ -125,20 +128,23 @@ public class SimpleRayTracer extends RayTracerBase {
      * @param n normal to the body at a point
      * @return Is there a shadow
      */
-    private boolean unshaded(GeoPoint gp,LightSource light, Vector l, Vector n, double nl) {
-        //if (gp.geometry.getMaterial().kT == Double3.ZERO)
-           // return true;
-        Vector lightDirection = l.scale(-1);
-        Vector deltaVector = n.scale(nl<0 ? 0.1 : -0.1);
-        Point p = gp.point.add(deltaVector);
-        Ray ray = new Ray(p,lightDirection);
-        List<GeoPoint> intersections = scene.geometries.findGeoIntersections(ray);
-        if(intersections == null) return true;
+    private Double3 transparency(GeoPoint gp, LightSource light, Vector l, Vector n) {
+        // if (gp.geometry.getMaterial().kT != Double3.ZERO)
+          //  return true;
+        Vector shadedDirection = l.scale(-1);
+        Ray shadedRay = new Ray(gp.point, shadedDirection);
+        Ray moveShadedRay = shadedRay.movingRayHead(n);
+        List<GeoPoint> intersections = scene.geometries.findGeoIntersections(moveShadedRay);
+        if (intersections == null) return Double3.ONE;
+        Double3 ktr = Double3.ONE;
         for (GeoPoint geoPoint : intersections) {
-            if (light.getDistance(p) > p.distance(geoPoint.point))
-                    return false;
+            if (Util.alignZero(geoPoint.point.distance(gp.point) - light.getDistance(gp.point)) <= 0) {
+                ktr = ktr.product(geoPoint.geometry.getMaterial().kT);
+                if (ktr.equals(Double3.ZERO))
+                    break;
             }
-        return true;
+        }
+        return ktr;
     }
 
     /**
@@ -152,9 +158,8 @@ public class SimpleRayTracer extends RayTracerBase {
         Vector v = ray.getDirection();
         double vn = Util.alignZero(v.dotProduct(n));
         Material material = gp.geometry.getMaterial();
-        return calcGlobalEffect(constructRefractedRay(gp, ray, n, v, vn), material.kT, level, k)//שקיפות
-                .add(calcGlobalEffect(constructReflectedRay(gp, ray, n, v, vn), material.kR, level, k));//השתקפות
-
+        return calcGlobalEffect(constructRefractedRay(ray, n), material.kT, level, k)//שקיפות
+                .add(calcGlobalEffect(constructReflectedRay(gp, n, v, vn), material.kR, level, k));//השתקפות
     }
 
     /**
@@ -168,32 +173,33 @@ public class SimpleRayTracer extends RayTracerBase {
         if (kkx.lowerThan(MIN_CALC_COLOR_K))
             return Color.BLACK;
         GeoPoint gp = findClosestIntersection(ray);
-        return (gp == null ? scene.background : calcColor(gp,ray, level - 1, kkx).scale(kx));
+        return gp == null ? scene.background : calcColor(gp,ray, level - 1, kkx).scale(kx);
     }
 
     /**
      * Builds a transparency ray קרן שקיפות
-     * @param gp - the cutting point
      * @param ray - The cutting ray
+     * @param n - The normal to the cutting point
      * @return transparency ray
      */
-    private Ray constructRefractedRay(GeoPoint gp, Ray ray, Vector n, Vector v, double vn) {
-        return  ray.movingRayHead(n);
+    private Ray constructRefractedRay(Ray ray, Vector n) {
+        return ray.movingRayHead(n);
     }
 
     /**
      * Builds a reflection ray קרן השתקפות
      * @param gp - the cutting point
-     * @param ray - The cutting ray
+     * @param n - the normal
+     * @param v - the direction
+     * @param vn - the dot product
      * @return reflection ray
      */
-    private Ray constructReflectedRay(GeoPoint gp, Ray ray, Vector n, Vector v, double vn) {
-        Vector r = v.add(n.scale(-2 * vn));
-        Vector deltaVector = n.scale(vn < 0 ? 0.1 : -0.1);
-        Point p = gp.point.add(deltaVector);
-        return new Ray(p, r);
+    private Ray constructReflectedRay(GeoPoint gp, Vector n, Vector v, double vn) {
+        if (vn == 0) return null;
+        Vector r = v.subtract(n.scale(2 * vn));
+        Ray ray = new Ray(gp.point, r);
+        return ray.movingRayHead(n);
     }
-
 }
 
 

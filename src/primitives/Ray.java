@@ -90,14 +90,15 @@ public class Ray {
 
     }
 
-
-    public Ray movingRayHead(Vector n)
-    {
-        double dp=n.dotProduct(direction);
-        Vector deltaVector = n.scale(dp < 0 ? DELTA : -DELTA);
-        Point moveP =head.add(deltaVector);
+    /**
+     * moving the head of the Ray
+     * @param n - the direction of the moving
+     * @return the moving Ray
+     */
+    public Ray movingRayHead(Vector n) {
+        double dp = n.dotProduct(direction);
+        Vector deltaVector = n.scale(dp < 0 ? -DELTA : DELTA);
+        Point moveP = head.add(deltaVector);
         return new Ray(moveP, direction);
     }
-
-
 }
