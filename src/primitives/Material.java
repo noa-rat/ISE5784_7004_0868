@@ -1,30 +1,33 @@
 package primitives;
 
 public class Material {
-    public Double3 kD=Double3.ZERO;
-    public Double3 kS=Double3.ZERO;
-    public int nShininess=0;
+    public Double3 kD = Double3.ZERO;
+    public Double3 kS = Double3.ZERO;
+    public int nShininess = 0;
 
     /**
-     * Attenuation coefficient of transparency
+     * Attenuation coefficient of transparency שקיפות
      */
     public Double3 kT = Double3.ZERO;
     /**
-     * reflection attenuation coefficient
+     * reflection attenuation coefficient השתקפות
      */
     public Double3 kR = Double3.ZERO;
 
     /**
      * setter
+     *
      * @param kD to put the filed kD;
      * @return Material
      */
     public Material setkD(double kD) {
-        this.kD =new Double3(kD);
+        this.kD = new Double3(kD);
         return this;
     }
+
     /**
      * setter
+     *
      * @param kS to put the filed kS;
      * @return Material
      */
@@ -36,6 +39,7 @@ public class Material {
 
     /**
      * setter
+     *
      * @param kD to put the filed kD;
      * @return Material
      */
@@ -43,8 +47,10 @@ public class Material {
         this.kD = kD;
         return this;
     }
+
     /**
      * setter
+     *
      * @param kS to put the filed kS;
      * @return Material
      */
@@ -54,10 +60,9 @@ public class Material {
         return this;
     }
 
-
-
     /**
      * setter
+     *
      * @param nShininess to put the filed nShininess;
      * @return Material
      */
@@ -68,6 +73,7 @@ public class Material {
 
     /**
      * setter
+     *
      * @param kT to put the filed kT
      * @return Material
      */
@@ -78,6 +84,7 @@ public class Material {
 
     /**
      * setter
+     *
      * @param kR to put the filed kR
      * @return Material
      */
@@ -88,6 +95,7 @@ public class Material {
 
     /**
      * setter
+     *
      * @param kT to put the filed kT
      * @return Material
      */
@@ -98,6 +106,7 @@ public class Material {
 
     /**
      * setter
+     *
      * @param kR to put the filed kR
      * @return Material
      */

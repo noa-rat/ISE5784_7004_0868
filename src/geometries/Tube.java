@@ -20,7 +20,7 @@ public class Tube extends RadialGeometry {
         // t -> scalar to to calculate
         double t = (axis.getDirection()).dotProduct(point.subtract(axis.getHead()));
         // o -> the center of the circle on the tub
-          Point o = (axis.getPoint(t));
+        Point o = (axis.getPoint(t));
         // normal calculate to the circle
         return (point.subtract(o)).normalize();
     }

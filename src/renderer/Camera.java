@@ -7,7 +7,7 @@ import java.util.MissingResourceException;
 /**
  * Use Builder Design Pattern
  */
-public class Camera implements Cloneable{
+public class Camera implements Cloneable {
     // Camera location
     private Point p0;
 
@@ -23,7 +23,6 @@ public class Camera implements Cloneable{
     private RayTracerBase rayTracer;
 
     /**
-     *
      * @return the Camera location
      */
     public Point getP0() {
@@ -31,7 +30,6 @@ public class Camera implements Cloneable{
     }
 
     /**
-     *
      * @return vTo, the vector go towards the view plane
      */
     public Vector getvTo() {
@@ -39,7 +37,6 @@ public class Camera implements Cloneable{
     }
 
     /**
-     *
      * @return vUp, the vector go towards the top
      */
     public Vector getvUp() {
@@ -47,7 +44,6 @@ public class Camera implements Cloneable{
     }
 
     /**
-     *
      * @return vRight, the vector go to the right
      */
     public Vector getvRight() {
@@ -55,7 +51,6 @@ public class Camera implements Cloneable{
     }
 
     /**
-     *
      * @return the height of the view plane
      */
     public double getViewPlaneHeight() {
@@ -63,7 +58,6 @@ public class Camera implements Cloneable{
     }
 
     /**
-     *
      * @return the width of the view plane
      */
     public double getViewPlaneWidth() {
@@ -71,17 +65,16 @@ public class Camera implements Cloneable{
     }
 
     /**
-     *
      * @return the distance from the camera to the view plane
      */
     public double getViewPlaneDistance() {
         return viewPlaneDistance;
     }
 
-    private Camera() {}
+    private Camera() {
+    }
 
     /**
-     *
      * @return the object of the build
      */
     public static Builder getBuilder() {
@@ -90,29 +83,28 @@ public class Camera implements Cloneable{
 
     /**
      * construct the ray from the camera to the view plane
+     *
      * @param nX - number of the rows in the view plane
      * @param nY - number of the columns in the view plane
-     * @param j - index column of the specific pixel
-     * @param i - index row of the specific pixel
+     * @param j  - index column of the specific pixel
+     * @param i  - index row of the specific pixel
      * @return the ray from the camera to the pixel in the view plane
      */
     public Ray constructRay(int nX, int nY, int j, int i) {
-        Point pc=p0.add(vTo.scale(viewPlaneDistance));
-        double rY=(viewPlaneHeight/nY);
-        double rX=(viewPlaneWidth/nX);
-        double xJ=(j-((nX-1)/2.0))*rX;
-        double yI=-(i-((nY-1)/2.0))*rY;
-        Point pIJ=pc;
-        if(xJ!=0)
-        {
-            pIJ=pIJ.add(vRight.scale(xJ));
+        Point pc = p0.add(vTo.scale(viewPlaneDistance));
+        double rY = (viewPlaneHeight / nY);
+        double rX = (viewPlaneWidth / nX);
+        double xJ = (j - ((nX - 1) / 2.0)) * rX;
+        double yI = -(i - ((nY - 1) / 2.0)) * rY;
+        Point pIJ = pc;
+        if (xJ != 0) {
+            pIJ = pIJ.add(vRight.scale(xJ));
         }
-        if(yI!=0)
-        {
-            pIJ=pIJ.add(vUp.scale(yI));
+        if (yI != 0) {
+            pIJ = pIJ.add(vUp.scale(yI));
         }
         //Calculation of the direction of the ray that is imposed from the PIJ
-        return new Ray(p0,pIJ.subtract(p0).normalize());
+        return new Ray(p0, pIJ.subtract(p0).normalize());
     }
 
     @Override
@@ -130,10 +122,8 @@ public class Camera implements Cloneable{
      * Processes the image
      */
     public Camera renderImage() {
-        for (int x = 0; x < imageWriter.getNx(); x++)
-        {
-            for(int y = 0; y < imageWriter.getNy(); y++)
-            {
+        for (int x = 0; x < imageWriter.getNx(); x++) {
+            for (int y = 0; y < imageWriter.getNy(); y++) {
                 castRay(imageWriter.getNx(), imageWriter.getNy(), x, y);
             }
         }
@@ -142,10 +132,11 @@ public class Camera implements Cloneable{
 
     /**
      * Casts a ray on a certain pixel and colors it
+     *
      * @param nX - the number of rows in the view plane
      * @param nY - the number of columns in the view plane
-     * @param x - the row number of the pixel
-     * @param y - the column number of the pixel
+     * @param x  - the row number of the pixel
+     * @param y  - the column number of the pixel
      */
     private void castRay(int nX, int nY, int x, int y) {
         ///////////////////////////////////////
@@ -157,13 +148,14 @@ public class Camera implements Cloneable{
 
     /**
      * Adds a grid to the imageWriter
+     *
      * @param interval - How many pixels are there in each square in the grid
-     * @param color - the color of the grid
+     * @param color    - the color of the grid
      */
     public Camera printGrid(int interval, Color color) {
-        for (int x = 0; x < imageWriter.getNx();x++) {
-            for(int y = 0; y < imageWriter.getNy(); y++) {
-                if(x%interval==0||y%interval==0)
+        for (int x = 0; x < imageWriter.getNx(); x++) {
+            for (int y = 0; y < imageWriter.getNy(); y++) {
+                if (x % interval == 0 || y % interval == 0)
                     imageWriter.writePixel(x, y, color);
             }
         }
@@ -192,7 +184,6 @@ public class Camera implements Cloneable{
         }
 
         /**
-         *
          * @param camera - Initializing the camera in this parameter
          */
         public Builder(Camera camera) {
@@ -236,7 +227,7 @@ public class Camera implements Cloneable{
         /**
          * Initializing the size of the view plane
          *
-         * @param width of the view plane
+         * @param width  of the view plane
          * @param height of the view plane
          * @return the object of the build
          */
@@ -289,6 +280,7 @@ public class Camera implements Cloneable{
 
         /**
          * Calls all functions within the class to create the camera object
+         *
          * @return camera
          */
         public Camera build() {
@@ -304,7 +296,7 @@ public class Camera implements Cloneable{
             if (camera.vUp == null) {
                 throw new MissingResourceException(misRender, nameClass, "vUp");
             }
-            camera.vRight =(camera.vTo.crossProduct(camera.vUp)).normalize();
+            camera.vRight = (camera.vTo.crossProduct(camera.vUp)).normalize();
 
             if (camera.viewPlaneHeight == 0.0) {
                 throw new MissingResourceException(misRender, nameClass, "viewPlaneHeight");
@@ -322,9 +314,7 @@ public class Camera implements Cloneable{
                 throw new MissingResourceException(misRender, nameClass, "rayTracer");
             }
 
-            return (Camera)camera.clone();
+            return (Camera) camera.clone();
         }
-
     }
-
 }

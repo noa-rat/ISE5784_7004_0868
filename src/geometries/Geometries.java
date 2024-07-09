@@ -10,17 +10,19 @@ import java.util.List;
 /**
  * a class for the collection of geometric bodies in the scene
  */
-public class Geometries extends Intersectable{
-    private final List<Intersectable> geometries =  new LinkedList<Intersectable>();
+public class Geometries extends Intersectable {
+    private final List<Intersectable> geometries = new LinkedList<Intersectable>();
 
-    public Geometries() { }
+    public Geometries() {
+    }
 
     public Geometries(Intersectable... geometries) {
         add(geometries);
     }
 
     /**
-     *The add function adds a list of the geometric entities to the field listGeometries
+     * The add function adds a list of the geometric entities to the field listGeometries
+     *
      * @param geometries List of all geometric bodies
      */
     public void add(Intersectable... geometries) {
@@ -28,19 +30,16 @@ public class Geometries extends Intersectable{
     }
 
     @Override
-    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray){
-        List<GeoPoint> listOfPoints=new LinkedList<GeoPoint>();
-        for(Intersectable geometry:geometries)
-        {
-            var result=geometry.findGeoIntersections(ray);
-            if(result!=null)
-            {
+    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
+        List<GeoPoint> listOfPoints = new LinkedList<GeoPoint>();
+        for (Intersectable geometry : geometries) {
+            var result = geometry.findGeoIntersections(ray);
+            if (result != null) {
                 listOfPoints.addAll(result);
             }
 
         }
-        if(listOfPoints.isEmpty())
-        {
+        if (listOfPoints.isEmpty()) {
             return null;
         }
         return listOfPoints;
