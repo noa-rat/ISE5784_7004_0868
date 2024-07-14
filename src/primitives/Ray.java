@@ -88,7 +88,6 @@ public class Ray {
                 closestPoint = geoPoint;
         }
         return closestPoint;
-
     }
 
     /**
