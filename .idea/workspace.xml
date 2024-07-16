@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="580921d5-819b-4cc3-b9af-dab1a6cd6754" name="Changes" comment="stage 7">
-      <change afterPath="$PROJECT_DIR$/unittests/miniProjectOne/miniProject1.java" afterDir="false" />
+    <list default="true" id="580921d5-819b-4cc3-b9af-dab1a6cd6754" name="Changes" comment="half minip1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/primitives/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Ray.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/miniProjectOne/miniProject1.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/miniProjectOne/miniProject1.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,6 +77,8 @@
     "JUnit.TubeTest.testGetNormal.executor": "Run",
     "JUnit.geometries in ISE5784_7004_0868.executor": "Run",
     "JUnit.integrationTest.testTriangle.executor": "Run",
+    "JUnit.miniProjectOne in ISE5784_7004_0868.executor": "Run",
+    "JUnit.miniProjectOne.WallOfTriangles.executor": "Run",
     "JUnit.miniProjectOne.executor": "Run",
     "JUnit.renderer in ISE5784_7004_0868.executor": "Run",
     "Repository.Attach.Annotations": "false",
@@ -111,7 +112,7 @@
       <recent name="geometries" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.miniProjectOne.WallOfTriangles">
+  <component name="RunManager" selected="JUnit.miniProjectOne">
     <configuration name="All in ISE5784_7004_0868" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5784_7004_0868" />
       <option name="PACKAGE_NAME" value="" />
@@ -135,17 +136,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ShadowTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="miniProjectOne in ISE5784_7004_0868" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5784_7004_0868" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="renderer.*" />
+          <option name="PATTERN" value="miniProjectOne.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="renderer" />
-      <option name="MAIN_CLASS_NAME" value="renderer.ShadowTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="miniProjectOne" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -183,11 +183,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.miniProjectOne.WallOfTriangles" />
         <item itemvalue="JUnit.miniProjectOne" />
+        <item itemvalue="JUnit.miniProjectOne in ISE5784_7004_0868" />
+        <item itemvalue="JUnit.miniProjectOne.WallOfTriangles" />
         <item itemvalue="JUnit.ReflectionRefractionTest" />
         <item itemvalue="JUnit.All in ISE5784_7004_0868" />
-        <item itemvalue="JUnit.ShadowTest" />
       </list>
     </recent_temporary>
   </component>
@@ -225,7 +225,8 @@
       <workItem from="1717585626846" duration="7008000" />
       <workItem from="1720526919640" duration="10983000" />
       <workItem from="1720609056453" duration="118000" />
-      <workItem from="1720956942384" duration="6741000" />
+      <workItem from="1720956942384" duration="7076000" />
+      <workItem from="1721134876337" duration="9330000" />
     </task>
     <task id="LOCAL‎-00001" summary="half stage 1 (primitives)">
       <option name="closed" value="true" />
@@ -387,7 +388,15 @@
       <option name="project" value="LOCAL‎" />
       <updated>1720537732647</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL‎-00021" summary="half minip1">
+      <option name="closed" value="true" />
+      <created>1720964812688</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL‎-00021" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1720964812688</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -413,6 +422,7 @@
     <MESSAGE value="PRO7.1" />
     <MESSAGE value="continue stage 7" />
     <MESSAGE value="stage 7" />
-    <option name="LAST_COMMIT_MESSAGE" value="stage 7" />
+    <MESSAGE value="half minip1" />
+    <option name="LAST_COMMIT_MESSAGE" value="half minip1" />
   </component>
 </project>
