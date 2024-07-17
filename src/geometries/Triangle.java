@@ -20,14 +20,13 @@ public class Triangle extends Polygon {
         Vector v2 = (this.vertices.get(2)).subtract(this.vertices.get(1));
         Vector v3 = (this.vertices.get(1)).subtract(this.vertices.get(0));
         double numerator1 = (v1).dotProduct(v2);
-        double Denominator1 = (v1.length())*(v2.length());
+        double Denominator1 = (v1.length()) * (v2.length());
         double angle1 = numerator1 / Denominator1;
         double result1 = Math.cos(angle1);
 
-        if (Util.isZero(result1 - 1))
-        {
+        if (Util.isZero(result1 - 1)) {
             double numerator2 = (v1).dotProduct(v3);
-            double Denominator2 = (v1.length())*(v3.length());
+            double Denominator2 = (v1.length()) * (v3.length());
             double angle2 = numerator2 / Denominator2;
             double result2 = Math.cos(angle2);
 
@@ -62,9 +61,8 @@ public class Triangle extends Polygon {
             double d3 = (ray.getDirection()).dotProduct(n3);
 
             if (((d1 > 0) && (d2 > 0) && (d3 > 0)) || ((d1 < 0) && (d2 < 0) && (d3 < 0))) {
-                for(GeoPoint geoPoint:intersection)
-                {
-                    geoPoint.geometry=this;
+                for (GeoPoint geoPoint : intersection) {
+                    geoPoint.geometry = this;
                 }
                 return intersection;
             } else {

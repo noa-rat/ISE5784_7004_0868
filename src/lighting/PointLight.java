@@ -15,6 +15,7 @@ public class PointLight extends Light implements LightSource {
 
     /**
      * getter of kC
+     *
      * @param kC to the field kC
      * @return The object that called the function
      */
@@ -25,6 +26,7 @@ public class PointLight extends Light implements LightSource {
 
     /**
      * getter of kL
+     *
      * @param kL to the field kL
      * @return The object that called the function
      */
@@ -35,6 +37,7 @@ public class PointLight extends Light implements LightSource {
 
     /**
      * getter of kQ
+     *
      * @param kQ to the field kQ
      * @return The object that called the function
      */
@@ -55,20 +58,19 @@ public class PointLight extends Light implements LightSource {
 
     @Override
     public Color getIntensity(Point p) {
-        double distance=position.distance(p);
-        double distanceSquared= position.distanceSquared(p);
-        double denominator=kC+(kL*distance)+kQ*distanceSquared;
-        return getIntensity().scale(1/denominator);
+        double distance = position.distance(p);
+        double distanceSquared = position.distanceSquared(p);
+        double denominator = kC + (kL * distance) + kQ * distanceSquared;
+        return getIntensity().scale(1 / denominator);
     }
 
     @Override
     public Vector getL(Point p) {
         return p.subtract(position).normalize();
     }
+
     @Override
-    public double getDistance(Point point){
+    public double getDistance(Point point) {
         return point.distance(position);
     }
-
-
 }

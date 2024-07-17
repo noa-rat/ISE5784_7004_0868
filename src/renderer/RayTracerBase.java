@@ -12,6 +12,7 @@ public abstract class RayTracerBase {
 
     /**
      * constructor
+     *
      * @param scene to initialize the field scene
      */
     public RayTracerBase(Scene scene) {
@@ -20,6 +21,7 @@ public abstract class RayTracerBase {
 
     /**
      * Tracks each ray and determines the color of the pixel it hits
+     *
      * @param ray - The ray after which the tracking is performed
      * @return the color of the pixel it hits
      */

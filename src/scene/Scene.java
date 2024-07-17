@@ -13,10 +13,9 @@ public class Scene {
     public Color background = Color.BLACK;
     public AmbientLight ambientLight = AmbientLight.NONE;
     public Geometries geometries = new Geometries();
-    public List<LightSource> lights= new LinkedList<>();
+    public List<LightSource> lights = new LinkedList<>();
 
     /**
-     *
      * @param name to update the name of the scene
      */
     public Scene(String name) {
@@ -25,6 +24,7 @@ public class Scene {
 
     /**
      * Updates the background color
+     *
      * @param background to update the background color
      * @return the object of the scene
      */
@@ -35,6 +35,7 @@ public class Scene {
 
     /**
      * Updates the ambientLight
+     *
      * @param ambientLight to update the ambientLight of the scene
      * @return the object of the scene
      */
@@ -45,6 +46,7 @@ public class Scene {
 
     /**
      * Updates the geometries
+     *
      * @param geometries to update the geometries in the scene
      * @return the object of the scene
      */

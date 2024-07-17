@@ -2,6 +2,8 @@ package renderer;
 
 import static java.awt.Color.*;
 
+import geometries.Plane;
+import lighting.PointLight;
 import org.junit.jupiter.api.Test;
 
 import geometries.Sphere;
@@ -24,7 +26,7 @@ public class ReflectionRefractionTest {
             .setDirection(new Vector(0,0,-1), new Vector(0,1,0))
             .setRayTracer(new SimpleRayTracer(scene));
 
-    /** Produce a picture of a sphere lighted by a spot light */
+    /** Produce a picture of a sphere lighted by a spotLight */
     @Test
     public void twoSpheres() {
         scene.geometries.add(
@@ -94,6 +96,29 @@ public class ReflectionRefractionTest {
         cameraBuilder.setLocation(new Point(0, 0, 1000)).setVpDistance(1000)
                 .setVpSize(200, 200)
                 .setImageWriter(new ImageWriter("refractionShadow", 600, 600))
+                .build()
+                .renderImage()
+                .writeToImage();
+    }
+
+    @Test
+    public void threeTransparentAndReflectedGeometries() {
+        scene.geometries.add(
+                new Sphere(600, new Point(-950, -450, -750)).setEmission(new Color(BLUE))
+                        .setMaterial(new Material().setkD(0.2).setkS(0.2).setnShininess(30).setkT(0.6)),
+                new Sphere(300, new Point(-950, -450, -750)).setEmission(new Color(RED))
+                        .setMaterial(new Material().setkD(0.5).setkS(0.5).setnShininess(100)),
+                new Plane(new Point(1000, -1000, -1000), new Point(-1000, 1000, -1000),
+                        new Point(670, 570, 3100))
+                        .setEmission(new Color(20, 20, 20))
+                        .setMaterial(new Material().setkR(0.2)));
+        scene.setAmbientLight(new AmbientLight(new Color(255,255,255), 0.1));
+        scene.lights.add(new PointLight(new Color(500, 70, 100), new Point(-750, -750, -150))
+                .setkL(0.00001).setkQ(0.000005));
+
+        cameraBuilder.setLocation(new Point(0, 0, 10100)).setVpDistance(10100)
+                .setVpSize(2500, 2500)
+                .setImageWriter(new ImageWriter("threeTransparentAndReflectedGeometries", 500, 500))
                 .build()
                 .renderImage()
                 .writeToImage();

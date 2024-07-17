@@ -8,12 +8,11 @@ import java.util.Objects;
 /**
  * Implements the composite design pattern
  */
-public abstract  class  Intersectable {
+public abstract class Intersectable {
     public List<Point> findIntersections(Ray ray) {
         var geoList = findGeoIntersections(ray);
         return geoList == null ? null : geoList.stream().map(gp -> gp.point).toList();
     }
-
 
 
     /**
@@ -27,8 +26,9 @@ public abstract  class  Intersectable {
 
         /**
          * constructor
+         *
          * @param geometry to put in field geometry
-         * @param point to put in field point
+         * @param point    to put in field point
          */
         public GeoPoint(Geometry geometry, Point point) {
             this.geometry = geometry;
@@ -39,7 +39,7 @@ public abstract  class  Intersectable {
         public boolean equals(Object o) {
             if (this == o) return true;
             if (!(o instanceof GeoPoint geoPoint)) return false;
-            return Objects.equals(geometry, geoPoint.geometry) && point.equals( geoPoint.point);
+            return Objects.equals(geometry, geoPoint.geometry) && point.equals(geoPoint.point);
         }
 
 
@@ -57,12 +57,11 @@ public abstract  class  Intersectable {
         }
     }
 
-    public  List<GeoPoint> findGeoIntersections(Ray ray){
+    public List<GeoPoint> findGeoIntersections(Ray ray) {
         return findGeoIntersectionsHelper(ray);
     }
-    public abstract  List<GeoPoint> findGeoIntersectionsHelper(Ray ray);
 
-
+    public abstract List<GeoPoint> findGeoIntersectionsHelper(Ray ray);
 
 
 }

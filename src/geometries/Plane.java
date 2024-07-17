@@ -72,8 +72,8 @@ public class Plane extends Geometry {
             return null;
         } else {
             Point point = (ray.getPoint(t));
-            GeoPoint geoPoint=new GeoPoint(this,point);
-            return  List.of(geoPoint);
+            GeoPoint geoPoint = new GeoPoint(this, point);
+            return List.of(geoPoint);
         }
     }
 }
