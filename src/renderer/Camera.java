@@ -122,9 +122,10 @@ public class Camera implements Cloneable {
      * Processes the image
      */
     public Camera renderImage() {
-        for (int x = 0; x < imageWriter.getNx(); x++) {
+        int nx = imageWriter.getNx();
+        for (int x = 0; x < nx; x++) {
             for (int y = 0; y < imageWriter.getNy(); y++) {
-                castRay(imageWriter.getNx(), imageWriter.getNy(), x, y);
+                castRay(nx, imageWriter.getNy(), x, y);
             }
         }
         return this;
@@ -139,9 +140,7 @@ public class Camera implements Cloneable {
      * @param y  - the column number of the pixel
      */
     private void castRay(int nX, int nY, int x, int y) {
-        ///////////////////////////////////////
         Ray ray = constructRay(nX, nY, x, y);
-        ///////////////////////////////////////
         Color color = rayTracer.traceRay(ray);
         imageWriter.writePixel(x, y, color);
     }

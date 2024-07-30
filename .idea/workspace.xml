@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="580921d5-819b-4cc3-b9af-dab1a6cd6754" name="Changes" comment="c" />
+    <list default="true" id="580921d5-819b-4cc3-b9af-dab1a6cd6754" name="Changes" comment="continue stage 7">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/Camera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/miniProjectOne/miniProject1.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/miniProjectOne/miniProjectOne.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -181,20 +185,12 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.miniProjectOne" />
+        <item itemvalue="JUnit.All in ISE5784_7004_0868" />
         <item itemvalue="JUnit.miniProjectOne in ISE5784_7004_0868" />
         <item itemvalue="JUnit.miniProjectOne.WallOfTriangles" />
         <item itemvalue="JUnit.ReflectionRefractionTest" />
-        <item itemvalue="JUnit.All in ISE5784_7004_0868" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -223,9 +219,7 @@
       <workItem from="1720526919640" duration="10983000" />
       <workItem from="1720609056453" duration="118000" />
       <workItem from="1720956942384" duration="7076000" />
-      <workItem from="1721134876337" duration="9370000" />
-      <workItem from="1721152804746" duration="438000" />
-      <workItem from="1721911966665" duration="296000" />
+      <workItem from="1721134876337" duration="9330000" />
     </task>
     <task id="LOCAL‎-00001" summary="half stage 1 (primitives)">
       <option name="closed" value="true" />
@@ -395,23 +389,7 @@
       <option name="project" value="LOCAL‎" />
       <updated>1720964812688</updated>
     </task>
-    <task id="LOCAL‎-00022" summary="continue minip1">
-      <option name="closed" value="true" />
-      <created>1721144317174</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL‎-00022" />
-      <option name="project" value="LOCAL‎" />
-      <updated>1721144317174</updated>
-    </task>
-    <task id="LOCAL‎-00023" summary="c">
-      <option name="closed" value="true" />
-      <created>1721912011915</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL‎-00023" />
-      <option name="project" value="LOCAL‎" />
-      <updated>1721912011915</updated>
-    </task>
-    <option name="localTasksCounter" value="24" />
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -438,8 +416,6 @@
     <MESSAGE value="continue stage 7" />
     <MESSAGE value="stage 7" />
     <MESSAGE value="half minip1" />
-    <MESSAGE value="continue minip1" />
-    <MESSAGE value="c" />
-    <option name="LAST_COMMIT_MESSAGE" value="c" />
+    <option name="LAST_COMMIT_MESSAGE" value="half minip1" />
   </component>
 </project>
