@@ -21,6 +21,7 @@ class miniProjectOne {
             .setLocation(Point.ZERO).setDirection(new Vector(0, 0, -1), new Vector(0,-1,0))
             .setVpDistance(100)
             .setVpSize(500, 500);
+            //.setRaysPerPixel(10) ;
     private final Color color = new Color(20,20,20);
     private final Material material = new Material()
             .setkD(0.3) // כמה מתפזר
@@ -61,6 +62,7 @@ class miniProjectOne {
         //        new Point(-100, 0, -53));
         //triangle9.setEmission(new Color(100,0,230)).setMaterial(material);
 
+        // line 1
         Triangle triangle4_1 = new Triangle(
                 new Point(0, 0, -53),
                 new Point(-30, 0, -53),
@@ -91,18 +93,44 @@ class miniProjectOne {
                 new Point(-100, -30, -53));
         triangle4_5.setEmission(new Color(100,0,230)).setMaterial(material);
 
+        // line 2
+        Triangle triangle4_6 = new Triangle(
+                new Point(-100, -35, -53),
+                new Point(-100, -65, -53),
+                new Point(-70, -35, -53));
+        triangle4_6.setEmission(new Color(100,0,230)).setMaterial(material);
+
+        Triangle triangle4_7 = new Triangle(
+                new Point(-35, -35, -53),
+                new Point(-65, -35, -53),
+                new Point(-65, -65, -53));
+        triangle4_7.setEmission(new Color(100,0,230)).setMaterial(material);
+
+        Triangle triangle4_8 = new Triangle(
+                new Point(-70, -35, -53),
+                new Point(-70, -65, -53),
+                new Point(-100, -65, -53));
+        triangle4_8.setEmission(new Color(100,0,230)).setMaterial(material);
+
+        // line 3
+        Triangle triangle4_9 = new Triangle(
+                new Point(-100, -70, -53),
+                new Point(-100, -100, -53),
+                new Point(-70, -70, -53));
+        triangle4_9.setEmission(new Color(100,0,230)).setMaterial(material);
+
         // lights
         SpotLight spotLight1 = (SpotLight) new SpotLight(
-                new Color(255, 255, 255),
-                new Point(150,0, -30),
-                new Vector(0,-1,-1)
+                new Color(225, 255, 255),
+                new Point(-115,-100, -30),
+                new Vector(1,1,-1)
         )
                 .setkL(0.001).setkQ(0.0002);
 
         SpotLight spotLight2 = (SpotLight) new SpotLight(
                 new Color(255, 255, 255),
-                new Point(-200,-100, -30),
-                new Vector(0,1,-1)
+                new Point(0,115, -30),
+                new Vector(0,-1,-1)
         )
                 .setkL(0.001).setkQ(0.0002);
 
@@ -117,10 +145,15 @@ class miniProjectOne {
         scene.geometries.add(
                 plane,
                 triangle1, triangle2, triangle3,
-                triangle4_1, triangle4_2, triangle4_3, triangle4_4, triangle4_5
+                // line 1
+                triangle4_1, triangle4_2, triangle4_3, triangle4_4, triangle4_5,
+                // line 2
+                triangle4_6, triangle4_7, triangle4_8,
+                // line 3
+                triangle4_9
         );
 
-        scene.setAmbientLight(new AmbientLight(new Color(WHITE), 0.17))
+        scene.setAmbientLight(new AmbientLight(new Color(200, 200, 200), 0.17))
                 .setBackground(new Color(BLACK))
                 .setLights(lights);
 

@@ -2,6 +2,8 @@ package renderer;
 
 import primitives.*;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.MissingResourceException;
 
 /**
@@ -21,6 +23,10 @@ public class Camera implements Cloneable {
 
     private ImageWriter imageWriter;
     private RayTracerBase rayTracer;
+
+    // antialiasing
+    // number of rays to pixel
+    private int raysPerPixel = 1;
 
     /**
      * @return the Camera location
@@ -90,21 +96,47 @@ public class Camera implements Cloneable {
      * @param i  - index row of the specific pixel
      * @return the ray from the camera to the pixel in the view plane
      */
-    public Ray constructRay(int nX, int nY, int j, int i) {
-        Point pc = p0.add(vTo.scale(viewPlaneDistance));
-        double rY = (viewPlaneHeight / nY);
-        double rX = (viewPlaneWidth / nX);
-        double xJ = (j - ((nX - 1) / 2.0)) * rX;
-        double yI = -(i - ((nY - 1) / 2.0)) * rY;
-        Point pIJ = pc;
-        if (xJ != 0) {
-            pIJ = pIJ.add(vRight.scale(xJ));
+    public List<Ray> constructRay(int nX, int nY, int j, int i) {
+        List<Ray> rays = new LinkedList<>();
+        Point pIJ = p0.add(vTo.scale(viewPlaneDistance));
+
+        double rY = viewPlaneHeight / nY;
+        double rX = viewPlaneWidth / nX;
+        double offsetY = rY / raysPerPixel;
+        double offsetX = rX / raysPerPixel;
+
+        double xJ = (j - (nX - 1) / 2.0) * rX;
+        double yI = -(i - (nY - 1) / 2.0) * rY;
+
+        // to prevent the formation of the zero vector
+        double epsilon = 0.0001;
+
+        for (int x = 0; x < raysPerPixel; x++) {
+            for (int y = 0; y < raysPerPixel; y++) {
+                double xOffset = xJ + offsetX * (x - raysPerPixel / 2.0);
+                double yOffset = yI + offsetY * (y - raysPerPixel / 2.0);
+
+                Point pIJOffset = pIJ;
+                if (!Util.isZero(xOffset)) {
+                    pIJOffset = pIJOffset.add(vRight.scale(xOffset));
+                }
+                if (!Util.isZero(yOffset)) {
+                    pIJOffset = pIJOffset.add(vUp.scale(yOffset));
+                }
+
+                Vector direction = pIJOffset.subtract(p0);
+
+                // Verify the direction vector is not zero
+                if (direction.length() == 0) {
+                    // Add a small offset along vTo direction to avoid zero vector
+                    direction = vTo.scale(epsilon);
+                }
+
+                rays.add(new Ray(p0, direction.normalize()));
+            }
         }
-        if (yI != 0) {
-            pIJ = pIJ.add(vUp.scale(yI));
-        }
-        //Calculation of the direction of the ray that is imposed from the PIJ
-        return new Ray(p0, pIJ.subtract(p0).normalize());
+
+        return rays;
     }
 
     @Override
@@ -140,8 +172,12 @@ public class Camera implements Cloneable {
      * @param y  - the column number of the pixel
      */
     private void castRay(int nX, int nY, int x, int y) {
-        Ray ray = constructRay(nX, nY, x, y);
-        Color color = rayTracer.traceRay(ray);
+        List<Ray> rays = constructRay(nX, nY, x, y);
+        Color color = Color.BLACK;
+        for (Ray ray : rays) {
+            color = color.add(rayTracer.traceRay(ray));
+        }
+        color = color.reduce(rays.size());
         imageWriter.writePixel(x, y, color);
     }
 
@@ -174,6 +210,18 @@ public class Camera implements Cloneable {
      */
     public static class Builder {
         private final Camera camera;
+
+        // antialiasing
+        /**
+         * setter to raysPerPixel
+         * @param raysPerPixel to put in the field raysPerPixel
+         * @return this
+         */
+        public Builder setRaysPerPixel(int raysPerPixel) {
+            camera.raysPerPixel = raysPerPixel;
+            return this;
+        }
+
 
         /**
          * Initializing the camera
