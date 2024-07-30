@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="580921d5-819b-4cc3-b9af-dab1a6cd6754" name="Changes" comment="continue minip1">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="580921d5-819b-4cc3-b9af-dab1a6cd6754" name="Changes" comment="c" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -227,6 +225,7 @@
       <workItem from="1720956942384" duration="7076000" />
       <workItem from="1721134876337" duration="9370000" />
       <workItem from="1721152804746" duration="438000" />
+      <workItem from="1721911966665" duration="296000" />
     </task>
     <task id="LOCAL‎-00001" summary="half stage 1 (primitives)">
       <option name="closed" value="true" />
@@ -404,7 +403,15 @@
       <option name="project" value="LOCAL‎" />
       <updated>1721144317174</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL‎-00023" summary="c">
+      <option name="closed" value="true" />
+      <created>1721912011915</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL‎-00023" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1721912011915</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -432,6 +439,7 @@
     <MESSAGE value="stage 7" />
     <MESSAGE value="half minip1" />
     <MESSAGE value="continue minip1" />
-    <option name="LAST_COMMIT_MESSAGE" value="continue minip1" />
+    <MESSAGE value="c" />
+    <option name="LAST_COMMIT_MESSAGE" value="c" />
   </component>
 </project>
