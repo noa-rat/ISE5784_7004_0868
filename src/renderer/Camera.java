@@ -205,6 +205,36 @@ public class Camera implements Cloneable {
         imageWriter.writeToImage();
     }
 
+    // Adaptive Super-Sampling
+
+    // פונקציה לדגימה נוספת אם יש שינוי צבע משמעותי
+    Color performAdditionalSampling(const Camera& camera, int x, int y, std::vector<Color>& initialColors, int raysPerPixel) {
+        std::vector<Color> additionalColors;
+        std::vector<Vector3> additionalRays = generateAdditionalSampleRays(camera, x, y, raysPerPixel);
+
+        for (const auto& ray : additionalRays) {
+            additionalColors.push_back(castRay(ray));
+        }
+
+        // ממזגים את כל הצבעים, גם של הדגימה הראשונית וגם של הדגימה הנוספת
+        initialColors.insert(initialColors.end(), additionalColors.begin(), additionalColors.end());
+        return averageColors(initialColors);
+    }
+
+    // פונקציה ליצירת קרניים נוספות
+    List<Vector> generateAdditionalSampleRays(Camera camera, int x, int y, int raysPerPixel) {
+        List<Vector> rays;
+        // יצירת קרניים נוספות באזורים עם שינויים חדים
+        for (int i = 0; i < raysPerPixel; i++) {
+            for (int j = 0; j < raysPerPixel; j++) {
+                float offsetX = ((i + 0.5f) / raysPerPixel) * 0.5f;
+                float offsetY = ((j + 0.5f) / raysPerPixel) * 0.5f;
+                rays.push_back(camera.createRay(x + offsetX, y + offsetY));
+            }
+        }
+        return rays;
+    }
+
     /**
      * the class that build the camera in Builder Design Pattern
      */

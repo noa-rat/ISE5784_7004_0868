@@ -12,7 +12,8 @@ import java.util.List;
 import static java.awt.Color.*;
 
 /**
- *
+ * Mini Project One
+ * @author Renana and Noa
  */
 class miniProjectOne {
     private final Scene scene  = new Scene("Test scene");
@@ -20,9 +21,9 @@ class miniProjectOne {
             .setRayTracer(new SimpleRayTracer(scene))
             .setLocation(Point.ZERO).setDirection(new Vector(0, 0, -1), new Vector(0,-1,0))
             .setVpDistance(100)
-            .setVpSize(500, 500);
-            //.setRaysPerPixel(10) ;
-    private final Color color = new Color(20,20,20);
+            .setVpSize(500, 500)
+            .setRaysPerPixel(4);
+    private final Color color = new Color(100,0,230);
     private final Material material = new Material()
             .setkD(0.3) // כמה מתפזר
             .setkS(0.1) // כמה חלק/מחוספס
@@ -31,12 +32,12 @@ class miniProjectOne {
 
     @Test
     public void WallOfTriangles() {
-        // geometies
+        // geometries
         Plane plane = new Plane(
                 new Point(-100, 0, -63),
                 new Point(0, 100, -63),
                 new Point(-100, 100, -63));
-        plane.setEmission(color).setMaterial(material);
+        plane.setEmission(new Color(20,20,20)).setMaterial(material);
 
         Triangle triangle1 = new Triangle(
                 new Point(-100, 0, -53),
@@ -56,68 +57,62 @@ class miniProjectOne {
                 new Point(100, 0, -53));
         triangle3.setEmission(new Color(0,40,220)).setMaterial(material);
 
-        //Triangle triangle9 = new Triangle(
-        //        new Point(-100, -100, -53),
-        //        new Point(0, 0, -53),
-        //        new Point(-100, 0, -53));
-        //triangle9.setEmission(new Color(100,0,230)).setMaterial(material);
-
         // line 1
         Triangle triangle4_1 = new Triangle(
                 new Point(0, 0, -53),
                 new Point(-30, 0, -53),
                 new Point(-30, -30, -53));
-        triangle4_1.setEmission(new Color(100,0,230)).setMaterial(material);
+        triangle4_1.setEmission(color).setMaterial(material);
 
         Triangle triangle4_2 = new Triangle(
                 new Point(-35, 0, -53),
                 new Point(-65, -30, -53),
                 new Point(-35, -30, -53));
-        triangle4_2.setEmission(new Color(100,0,230)).setMaterial(material);
+        triangle4_2.setEmission(color).setMaterial(material);
 
         Triangle triangle4_3 = new Triangle(
                 new Point(-35, 0, -53),
                 new Point(-65, 0, -53),
                 new Point(-65, -30, -53));
-        triangle4_3.setEmission(new Color(100,0,230)).setMaterial(material);
+        triangle4_3.setEmission(color).setMaterial(material);
 
         Triangle triangle4_4 = new Triangle(
                 new Point(-70, 0, -53),
                 new Point(-70, -30, -53),
                 new Point(-100, -30, -53));
-        triangle4_4.setEmission(new Color(100,0,230)).setMaterial(material);
+        triangle4_4.setEmission(color).setMaterial(material);
 
         Triangle triangle4_5 = new Triangle(
                 new Point(-70, 0, -53),
                 new Point(-100, 0, -53),
                 new Point(-100, -30, -53));
-        triangle4_5.setEmission(new Color(100,0,230)).setMaterial(material);
+        triangle4_5.setEmission(color).setMaterial(material);
 
         // line 2
         Triangle triangle4_6 = new Triangle(
                 new Point(-100, -35, -53),
                 new Point(-100, -65, -53),
                 new Point(-70, -35, -53));
-        triangle4_6.setEmission(new Color(100,0,230)).setMaterial(material);
+        triangle4_6.setEmission(color).setMaterial(material);
 
         Triangle triangle4_7 = new Triangle(
                 new Point(-35, -35, -53),
                 new Point(-65, -35, -53),
                 new Point(-65, -65, -53));
-        triangle4_7.setEmission(new Color(100,0,230)).setMaterial(material);
+        triangle4_7.setEmission(color).setMaterial(material);
 
         Triangle triangle4_8 = new Triangle(
                 new Point(-70, -35, -53),
                 new Point(-70, -65, -53),
                 new Point(-100, -65, -53));
-        triangle4_8.setEmission(new Color(100,0,230)).setMaterial(material);
+        triangle4_8.setEmission(color).setMaterial(material);
 
         // line 3
         Triangle triangle4_9 = new Triangle(
                 new Point(-100, -70, -53),
                 new Point(-100, -100, -53),
                 new Point(-70, -70, -53));
-        triangle4_9.setEmission(new Color(100,0,230)).setMaterial(material);
+        triangle4_9.setEmission(color).setMaterial(material);
 
         // lights
         SpotLight spotLight1 = (SpotLight) new SpotLight(

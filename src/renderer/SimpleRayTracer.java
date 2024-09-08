@@ -1,12 +1,14 @@
 package renderer;
 
-import lighting.LightSource;
-import lighting.PointLight;
+import lighting.*;
 import primitives.*;
 import scene.Scene;
 import geometries.Intersectable.GeoPoint;
+import renderer.Camera;
 
 import java.util.List;
+
+import static java.lang.Math.abs;
 
 /**
  * realizes the class RayTracerBase to track each ray
@@ -106,7 +108,7 @@ public class SimpleRayTracer extends RayTracerBase {
      * @return Double3 to the level of influence of Diffusive
      */
     private Double3 calcDiffusive(Double3 kD, double nl) {
-        return kD.scale(Math.abs(nl));
+        return kD.scale(abs(nl));
     }
 
     /**
@@ -212,6 +214,31 @@ public class SimpleRayTracer extends RayTracerBase {
         Vector r = v.subtract(n.scale(2 * vn));
         return new Ray(gp.point, r, n);
     }
+
+    // Adaptive Super-Sampling
+
+    // פונקציה חדשה לדגימת-על אדפטיבית לפיקסל מסוים
+    Color adaptiveSuperSampling(Camera camera, int x, int y, int raysPerPixel, float threshold) {
+        List<Color> colors;
+        List<Vector> rays = generateSampleRays(camera, x, y, raysPerPixel);
+
+        for (const auto & ray :rays){
+            colors.push_back(castRay(ray));
+        }
+
+        // בדיקה אם יש שינוי משמעותי בצבעים בין הקרניים
+        for (size_t i = 0; i < colors.size(); i++) {
+            for (size_t j = i + 1; j < colors.size(); j++) {
+                if (colorDifference(colors[i], colors[j]) > threshold) {
+                    // שינוי משמעותי בצבע - יש צורך בדגימה נוספת
+                    return performAdditionalSampling(camera, x, y, colors, raysPerPixel);
+                }
+            }
+        }
+
+        // אין שינוי משמעותי - ממוצע הצבעים הקיימים מספיק טוב
+        return averageColors(colors);
+    }
+
+
 }
-
-

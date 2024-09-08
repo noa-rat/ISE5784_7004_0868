@@ -1,5 +1,7 @@
 package primitives;
 
+import static java.lang.Math.abs;
+
 /**
  * Wrapper class for java.jwt.Color The constructors operate with any
  * non-negative RGB values. The colors are maintained without upper limit of
@@ -114,4 +116,15 @@ public class Color {
 
     @Override
     public String toString() { return "rgb:" + rgb; }
+
+    // Adaptive Super-Sampling
+    /**
+     * Function to calculate color difference
+     * @param c1 color 1
+     * @param c2 color 2
+     * @return the color difference
+     */
+    double colorDifference(Color c1, Color c2) {
+        return abs(c1.rgb.d1 - c2.rgb.d1) + abs(c1.rgb.d2 - c2.rgb.d2) + abs(c1.rgb.d2 - c2.rgb.d2);
+    }
 }
