@@ -24,10 +24,6 @@ public class Camera implements Cloneable {
     private ImageWriter imageWriter;
     private RayTracerBase rayTracer;
 
-    // antialiasing
-    // number of rays to pixel
-    private int raysPerPixel = 1;
-
     /**
      * @return the Camera location
      */
@@ -96,7 +92,7 @@ public class Camera implements Cloneable {
      * @param i  - index row of the specific pixel
      * @return the ray from the camera to the pixel in the view plane
      */
-    public List<Ray> constructRay(int nX, int nY, int j, int i) {
+    public List<Ray> constructRay(int nX, int nY, int j, int i, int raysPerPixel) {
         List<Ray> rays = new LinkedList<>();
         Point pIJ = p0.add(vTo.scale(viewPlaneDistance));
 
@@ -154,10 +150,9 @@ public class Camera implements Cloneable {
      * Processes the image
      */
     public Camera renderImage() {
-        int nx = imageWriter.getNx();
-        for (int x = 0; x < nx; x++) {
+        for (int x = 0; x < imageWriter.getNx(); x++) {
             for (int y = 0; y < imageWriter.getNy(); y++) {
-                castRay(nx, imageWriter.getNy(), x, y);
+                castRay(imageWriter.getNx(), imageWriter.getNy(), x, y);
             }
         }
         return this;
@@ -172,12 +167,31 @@ public class Camera implements Cloneable {
      * @param y  - the column number of the pixel
      */
     private void castRay(int nX, int nY, int x, int y) {
-        List<Ray> rays = constructRay(nX, nY, x, y);
-        Color color = Color.BLACK;
+        List<Ray> rays = constructRay(nX, nY, x, y, 2);
+        List<Color> colors = new LinkedList<>();
         for (Ray ray : rays) {
-            color = color.add(rayTracer.traceRay(ray));
+            colors.add(rayTracer.traceRay(ray));
         }
-        color = color.reduce(rays.size());
+
+        Color color = Color.BLACK;
+        // Adaptive Super-Sampling
+        if (isAdaptiveSamplingNeeded(colors)) {
+            // קבלת קרניים נוספות לדגימה
+            List<Ray> additionalRays = constructRay(nX, nY, x, y, 4);
+
+            // הוספת הצבעים של הקרניים הנוספות
+            for (Ray ray : additionalRays) {
+                color = color.add(rayTracer.traceRay(ray));
+            }
+            color = color.reduce(additionalRays.size());
+        }
+        else {
+            for (Color c : colors) {
+                color = color.add(c);
+            }
+            color = color.reduce(rays.size());
+        }
+
         imageWriter.writePixel(x, y, color);
     }
 
@@ -203,36 +217,6 @@ public class Camera implements Cloneable {
      */
     public void writeToImage() {
         imageWriter.writeToImage();
-    }
-
-    // Adaptive Super-Sampling
-
-    // פונקציה לדגימה נוספת אם יש שינוי צבע משמעותי
-    Color performAdditionalSampling(const Camera& camera, int x, int y, std::vector<Color>& initialColors, int raysPerPixel) {
-        std::vector<Color> additionalColors;
-        std::vector<Vector3> additionalRays = generateAdditionalSampleRays(camera, x, y, raysPerPixel);
-
-        for (const auto& ray : additionalRays) {
-            additionalColors.push_back(castRay(ray));
-        }
-
-        // ממזגים את כל הצבעים, גם של הדגימה הראשונית וגם של הדגימה הנוספת
-        initialColors.insert(initialColors.end(), additionalColors.begin(), additionalColors.end());
-        return averageColors(initialColors);
-    }
-
-    // פונקציה ליצירת קרניים נוספות
-    List<Vector> generateAdditionalSampleRays(Camera camera, int x, int y, int raysPerPixel) {
-        List<Vector> rays;
-        // יצירת קרניים נוספות באזורים עם שינויים חדים
-        for (int i = 0; i < raysPerPixel; i++) {
-            for (int j = 0; j < raysPerPixel; j++) {
-                float offsetX = ((i + 0.5f) / raysPerPixel) * 0.5f;
-                float offsetY = ((j + 0.5f) / raysPerPixel) * 0.5f;
-                rays.push_back(camera.createRay(x + offsetX, y + offsetY));
-            }
-        }
-        return rays;
     }
 
     /**

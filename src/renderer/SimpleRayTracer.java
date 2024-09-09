@@ -216,29 +216,4 @@ public class SimpleRayTracer extends RayTracerBase {
     }
 
     // Adaptive Super-Sampling
-
-    // פונקציה חדשה לדגימת-על אדפטיבית לפיקסל מסוים
-    Color adaptiveSuperSampling(Camera camera, int x, int y, int raysPerPixel, float threshold) {
-        List<Color> colors;
-        List<Vector> rays = generateSampleRays(camera, x, y, raysPerPixel);
-
-        for (const auto & ray :rays){
-            colors.push_back(castRay(ray));
-        }
-
-        // בדיקה אם יש שינוי משמעותי בצבעים בין הקרניים
-        for (size_t i = 0; i < colors.size(); i++) {
-            for (size_t j = i + 1; j < colors.size(); j++) {
-                if (colorDifference(colors[i], colors[j]) > threshold) {
-                    // שינוי משמעותי בצבע - יש צורך בדגימה נוספת
-                    return performAdditionalSampling(camera, x, y, colors, raysPerPixel);
-                }
-            }
-        }
-
-        // אין שינוי משמעותי - ממוצע הצבעים הקיימים מספיק טוב
-        return averageColors(colors);
-    }
-
-
 }

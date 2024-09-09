@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="580921d5-819b-4cc3-b9af-dab1a6cd6754" name="Changes" comment=" end mini project 1">
+    <list default="true" id="580921d5-819b-4cc3-b9af-dab1a6cd6754" name="Changes" comment="half minip2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/primitives/Color.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Color.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/Camera.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/SimpleRayTracer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/SimpleRayTracer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/miniProjectOne/miniProjectOne.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/miniProjectOne/miniProjectOne.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -235,7 +233,8 @@
       <workItem from="1722421257569" duration="595000" />
       <workItem from="1723112460142" duration="251000" />
       <workItem from="1723572144691" duration="877000" />
-      <workItem from="1725806828053" duration="2063000" />
+      <workItem from="1725806828053" duration="2107000" />
+      <workItem from="1725887352807" duration="5796000" />
     </task>
     <task id="LOCAL‎-00001" summary="half stage 1 (primitives)">
       <option name="closed" value="true" />
@@ -413,7 +412,15 @@
       <option name="project" value="LOCAL‎" />
       <updated>1722344486488</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL‎-00023" summary="half minip2">
+      <option name="closed" value="true" />
+      <created>1725808927265</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL‎-00023" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1725808927265</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -441,6 +448,7 @@
     <MESSAGE value="stage 7" />
     <MESSAGE value="half minip1" />
     <MESSAGE value=" end mini project 1" />
-    <option name="LAST_COMMIT_MESSAGE" value=" end mini project 1" />
+    <MESSAGE value="half minip2" />
+    <option name="LAST_COMMIT_MESSAGE" value="half minip2" />
   </component>
 </project>
