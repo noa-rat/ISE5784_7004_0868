@@ -24,6 +24,10 @@ public class Camera implements Cloneable {
     private ImageWriter imageWriter;
     private RayTracerBase rayTracer;
 
+    private int minRaysPerPixel = 2;
+    private int maxRaysPerPixel = 4;
+    private int differentColors = 3;
+
     /**
      * @return the Camera location
      */
@@ -86,10 +90,11 @@ public class Camera implements Cloneable {
     /**
      * construct the ray from the camera to the view plane
      *
-     * @param nX - number of the rows in the view plane
-     * @param nY - number of the columns in the view plane
-     * @param j  - index column of the specific pixel
-     * @param i  - index row of the specific pixel
+     * @param nX           - number of the rows in the view plane
+     * @param nY           - number of the columns in the view plane
+     * @param j            - index column of the specific pixel
+     * @param i            - index row of the specific pixel
+     * @param raysPerPixel - number of rays to every pixel
      * @return the ray from the camera to the pixel in the view plane
      */
     public List<Ray> constructRay(int nX, int nY, int j, int i, int raysPerPixel) {
@@ -104,8 +109,8 @@ public class Camera implements Cloneable {
         double xJ = (j - (nX - 1) / 2.0) * rX;
         double yI = -(i - (nY - 1) / 2.0) * rY;
 
-        // to prevent the formation of the zero vector
-        double epsilon = 0.0001;
+//        // to prevent the formation of the zero vector
+//        double epsilon = 0.0001;
 
         for (int x = 0; x < raysPerPixel; x++) {
             for (int y = 0; y < raysPerPixel; y++) {
@@ -122,11 +127,11 @@ public class Camera implements Cloneable {
 
                 Vector direction = pIJOffset.subtract(p0);
 
-                // Verify the direction vector is not zero
-                if (direction.length() == 0) {
-                    // Add a small offset along vTo direction to avoid zero vector
-                    direction = vTo.scale(epsilon);
-                }
+//                // Verify the direction vector is not zero
+//                if (direction.length() == 0) {
+//                    // Add a small offset along vTo direction to avoid zero vector
+//                    direction = vTo.scale(epsilon);
+//                }
 
                 rays.add(new Ray(p0, direction.normalize()));
             }
@@ -167,7 +172,7 @@ public class Camera implements Cloneable {
      * @param y  - the column number of the pixel
      */
     private void castRay(int nX, int nY, int x, int y) {
-        List<Ray> rays = constructRay(nX, nY, x, y, 2);
+        List<Ray> rays = constructRay(nX, nY, x, y, minRaysPerPixel);
         List<Color> colors = new LinkedList<>();
         for (Ray ray : rays) {
             colors.add(rayTracer.traceRay(ray));
@@ -176,16 +181,12 @@ public class Camera implements Cloneable {
         Color color = Color.BLACK;
         // Adaptive Super-Sampling
         if (isAdaptiveSamplingNeeded(colors)) {
-            // קבלת קרניים נוספות לדגימה
-            List<Ray> additionalRays = constructRay(nX, nY, x, y, 4);
-
-            // הוספת הצבעים של הקרניים הנוספות
+            List<Ray> additionalRays = constructRay(nX, nY, x, y, maxRaysPerPixel);
             for (Ray ray : additionalRays) {
                 color = color.add(rayTracer.traceRay(ray));
             }
             color = color.reduce(additionalRays.size());
-        }
-        else {
+        } else {
             for (Color c : colors) {
                 color = color.add(c);
             }
@@ -193,6 +194,27 @@ public class Camera implements Cloneable {
         }
 
         imageWriter.writePixel(x, y, color);
+    }
+
+    // Adaptive Super-Sampling
+    /**
+     * help function - check the level of differant
+     * @param colors - list of colors the check between its.
+     * @return - if the different is big
+     */
+    private boolean isAdaptiveSamplingNeeded(List<Color> colors) {
+        double different = 0;
+        for (Color c1 : colors) {
+            for (Color c2 : colors) {
+                if (!(c1.equals(c2))) {
+                    different += c1.colorDifference(c2);
+                }
+            }
+        }
+        if (different > differentColors)
+            return true;
+        else
+            return false;
     }
 
     /**
@@ -226,16 +248,39 @@ public class Camera implements Cloneable {
         private final Camera camera;
 
         // antialiasing
+
         /**
-         * setter to raysPerPixel
-         * @param raysPerPixel to put in the field raysPerPixel
+         * setter to minRaysPerPixel
+         *
+         * @param minRaysPerPixel to put in the field minRaysPerPixel
          * @return this
          */
-        public Builder setRaysPerPixel(int raysPerPixel) {
-            camera.raysPerPixel = raysPerPixel;
+        public Builder setMinRaysPerPixel(int minRaysPerPixel) {
+            camera.minRaysPerPixel = minRaysPerPixel;
             return this;
         }
 
+        /**
+         * setter to maxRaysPerPixel
+         *
+         * @param maxRaysPerPixel to put in the field maxRaysPerPixel
+         * @return this
+         */
+        public Builder setMaxRaysPerPixel(int maxRaysPerPixel) {
+            camera.maxRaysPerPixel = maxRaysPerPixel;
+            return this;
+        }
+
+        /**
+         * setter to differentColors
+         *
+         * @param differentColors to put in the field differentColors
+         * @return this
+         */
+        public Builder setDifferentColors(int differentColors) {
+            camera.differentColors = differentColors;
+            return this;
+        }
 
         /**
          * Initializing the camera

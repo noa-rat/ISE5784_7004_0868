@@ -22,7 +22,8 @@ class miniProjectOne {
             .setLocation(Point.ZERO).setDirection(new Vector(0, 0, -1), new Vector(0,-1,0))
             .setVpDistance(100)
             .setVpSize(500, 500)
-            .setRaysPerPixel(4);
+            .setMinRaysPerPixel(1)
+            .setMaxRaysPerPixel(1);
     private final Color color = new Color(100,0,230);
     private final Material material = new Material()
             .setkD(0.3) // כמה מתפזר

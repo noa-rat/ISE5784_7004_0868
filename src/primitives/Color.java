@@ -120,11 +120,10 @@ public class Color {
     // Adaptive Super-Sampling
     /**
      * Function to calculate color difference
-     * @param c1 color 1
-     * @param c2 color 2
+     * @param c color
      * @return the color difference
      */
-    double colorDifference(Color c1, Color c2) {
-        return abs(c1.rgb.d1 - c2.rgb.d1) + abs(c1.rgb.d2 - c2.rgb.d2) + abs(c1.rgb.d2 - c2.rgb.d2);
+    public double colorDifference(Color c) {
+        return abs(rgb.d1 - c.rgb.d1) + abs(rgb.d2 - c.rgb.d2) + abs(rgb.d3 - c.rgb.d3);
     }
 }
