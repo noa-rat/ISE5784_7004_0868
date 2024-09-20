@@ -26,7 +26,7 @@ public class Camera implements Cloneable {
 
     private int minRaysPerPixel = 2;
     private int maxRaysPerPixel = 4;
-    private int differentColors = 3;
+    private int differentColors = 150;
 
     /**
      * @return the Camera location
@@ -109,34 +109,34 @@ public class Camera implements Cloneable {
         double xJ = (j - (nX - 1) / 2.0) * rX;
         double yI = -(i - (nY - 1) / 2.0) * rY;
 
-//        // to prevent the formation of the zero vector
-//        double epsilon = 0.0001;
+        if (raysPerPixel == 1) {
+            if (xJ != 0) {
+                pIJ = pIJ.add(vRight.scale(xJ));
+            }
+            if (yI != 0) {
+                pIJ = pIJ.add(vUp.scale(yI));
+            }
+            rays.add(new Ray(p0, pIJ.subtract(p0).normalize()));
+        }
+        else {
+            for (int x = 0; x < raysPerPixel; x++) {
+                for (int y = 0; y < raysPerPixel; y++) {
+                    double xOffset = xJ + offsetX * (x - raysPerPixel / 2.0);
+                    double yOffset = yI + offsetY * (y - raysPerPixel / 2.0);
 
-        for (int x = 0; x < raysPerPixel; x++) {
-            for (int y = 0; y < raysPerPixel; y++) {
-                double xOffset = xJ + offsetX * (x - raysPerPixel / 2.0);
-                double yOffset = yI + offsetY * (y - raysPerPixel / 2.0);
+                    Point pIJOffset = pIJ;
+                    if (!Util.isZero(xOffset)) {
+                        pIJOffset = pIJOffset.add(vRight.scale(xOffset));
+                    }
+                    if (!Util.isZero(yOffset)) {
+                        pIJOffset = pIJOffset.add(vUp.scale(yOffset));
+                    }
 
-                Point pIJOffset = pIJ;
-                if (!Util.isZero(xOffset)) {
-                    pIJOffset = pIJOffset.add(vRight.scale(xOffset));
+                    Vector direction = pIJOffset.subtract(p0);
+                    rays.add(new Ray(p0, direction.normalize()));
                 }
-                if (!Util.isZero(yOffset)) {
-                    pIJOffset = pIJOffset.add(vUp.scale(yOffset));
-                }
-
-                Vector direction = pIJOffset.subtract(p0);
-
-//                // Verify the direction vector is not zero
-//                if (direction.length() == 0) {
-//                    // Add a small offset along vTo direction to avoid zero vector
-//                    direction = vTo.scale(epsilon);
-//                }
-
-                rays.add(new Ray(p0, direction.normalize()));
             }
         }
-
         return rays;
     }
 

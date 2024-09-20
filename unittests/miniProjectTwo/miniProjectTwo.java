@@ -27,10 +27,9 @@ class miniProjectTwo {
             .setMaxRaysPerPixel(4)
             .setDifferentColors(3);
     private final Material material = new Material()
-            .setkD(0.3) // כמה מתפזר
-            .setkS(0.1) // כמה חלק/מחוספס
-            .setnShininess(80); // כמה ברק
-            //.setkR(0.2); // כמה משתקף
+            .setkD(0.3)
+            .setkS(0.1)
+            .setnShininess(80);
 
     @Test
     public void WallOfTriangles() {
@@ -46,13 +45,13 @@ class miniProjectTwo {
                 new Point(-100, 0, -60),
                 new Point(0, 100, -60),
                 new Point(0, 0, -60));
-        triangle2.setEmission(new Color(244, 20, 95)).setMaterial(material);
+        triangle2.setEmission(new Color(20, 20, 20)).setMaterial(material);
 
         Triangle triangle3 = new Triangle(
                 new Point(100, 0, -60),
                 new Point(0, 100, -60),
                 new Point(0, 0, -60));
-        triangle3.setEmission(new Color(244, 20, 132)).setMaterial(material);
+        triangle3.setEmission(new Color(20, 20, 20)).setMaterial(material);
 
         Triangle triangle4 = new Triangle(
                 new Point(100, 0, -60),
@@ -88,7 +87,7 @@ class miniProjectTwo {
                 new Point(-100, -100, -60),
                 new Point(0, 0, -60),
                 new Point(-100, 0, -60));
-        triangle9.setEmission(new Color(175, 20, 244)).setMaterial(material);
+        triangle9.setEmission(new Color(20, 20, 20)).setMaterial(material);
 
         Triangle triangle10 = new Triangle(
                 new Point(-100, -100, -60),
@@ -105,7 +104,7 @@ class miniProjectTwo {
                 new Point(100, -100, -60),
                 new Point(0, 0, -60),
                 new Point(100, 0, -60));
-        triangle12.setEmission(new Color(63, 20, 244)).setMaterial(material);
+        triangle12.setEmission(new Color(20, 20, 20)).setMaterial(material);
 
         Triangle triangle13 = new Triangle(
                 new Point(100,-100,-60),
@@ -159,25 +158,25 @@ class miniProjectTwo {
                 new Point(100,-200,-60),
                 new Point(100,-100,-60),
                 new Point(200,-100,-60));
-        triangle21.setEmission(new Color(20, 244, 212)).setMaterial(material);
+        triangle21.setEmission(new Color(60, 244, 212)).setMaterial(material);
 
         Triangle triangle22 = new Triangle(
                 new Point(100,-200,-60),
                 new Point(200,-200,-60),
                 new Point(200,-100,-60));
-        triangle22.setEmission(new Color(20, 244, 175)).setMaterial(material);
+        triangle22.setEmission(new Color(100, 244, 175)).setMaterial(material);
 
         Triangle triangle23 = new Triangle(
                 new Point(-200,-100,-60),
                 new Point(-100,-100,-60),
                 new Point(-100,-200,-60));
-        triangle23.setEmission(new Color(20, 244, 137)).setMaterial(material);
+        triangle23.setEmission(new Color(80, 200, 137)).setMaterial(material);
 
         Triangle triangle24 = new Triangle(
                 new Point(-100,-200,-60),
                 new Point(-200,-100,-60),
                 new Point(-200,-200,-60));
-        triangle24.setEmission(new Color(20, 244, 100)).setMaterial(material);
+        triangle24.setEmission(new Color(150, 180, 100)).setMaterial(material);
         // line 4
         Triangle triangle25 = new Triangle(
                 new Point(-100, 100, -60),
@@ -228,28 +227,28 @@ class miniProjectTwo {
         triangle32.setEmission(new Color(239, 244, 20)).setMaterial(material);
         // lights
         SpotLight spotLight1 = (SpotLight) new SpotLight(
-                new Color(255, 255, 255),
-                new Point(150,0, -30),
-                new Vector(0,-1,-1)
-        )
-                .setkL(0.001).setkQ(0.0002);
-        SpotLight spotLight2 = (SpotLight) new SpotLight(
-                new Color(255, 255, 255),
-                new Point(-200,-100, -30),
-                new Vector(0,1,-1)
-        )
-                .setkL(0.001).setkQ(0.0002);
-        PointLight pointLight1 = (PointLight) new PointLight(
-                new Color(255, 255, 255),
-                new Point(0, 200, -60)
-        )
-                .setkL(0.001).setkQ(0.0002);
-        PointLight pointLight2 = (PointLight) new PointLight(
-                new Color(255, 255, 255),
-                new Point(200,0,-60)
+                new Color(225, 255, 255),
+                new Point(-115,-100, -30),
+                new Vector(1,1,-1)
         )
                 .setkL(0.001).setkQ(0.0002);
 
+        SpotLight spotLight2 = (SpotLight) new SpotLight(
+                new Color(255, 255, 255),
+                new Point(0,115, -30),
+                new Vector(0,-1,-1)
+        )
+                .setkL(0.001).setkQ(0.0002);
+        PointLight pointLight1 = new PointLight(
+                new Color(255, 255, 255),
+                new Point(0, 50, -30)
+        )
+                .setkL(0.001).setkQ(0.0002);
+        PointLight pointLight2 = new PointLight(
+                new Color(255, 255, 255),
+                new Point(50,0,-30)
+        )
+                .setkL(0.001).setkQ(0.0002);
         DirectionalLight directionalLight = new DirectionalLight(
                 new Color(180, 180, 180),
                 new Vector(0,-1,-1)

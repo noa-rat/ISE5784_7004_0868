@@ -26,10 +26,9 @@ class miniProjectOne {
             .setMaxRaysPerPixel(1);
     private final Color color = new Color(100,0,230);
     private final Material material = new Material()
-            .setkD(0.3) // כמה מתפזר
-            .setkS(0.1) // כמה חלק/מחוספס
-            .setnShininess(80); // כמה ברק
-            //.setkR(0.2); // כמה משתקף
+            .setkD(0.3)
+            .setkS(0.1)
+            .setnShininess(80);
 
     @Test
     public void symbolOfJCT() {
