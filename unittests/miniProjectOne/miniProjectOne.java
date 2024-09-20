@@ -32,7 +32,7 @@ class miniProjectOne {
             //.setkR(0.2); // כמה משתקף
 
     @Test
-    public void WallOfTriangles() {
+    public void symbolOfJCT() {
         // geometries
         Plane plane = new Plane(
                 new Point(-100, 0, -63),

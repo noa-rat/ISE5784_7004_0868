@@ -43,9 +43,9 @@ class miniProjectTwo {
         triangle1.setEmission(new Color(244, 20, 57)).setMaterial(material);
 
         Triangle triangle2 = new Triangle(
-                new Point(-100, 0, -63),
-                new Point(0, 100, -63),
-                new Point(0, 0, -63));
+                new Point(-100, 0, -60),
+                new Point(0, 100, -60),
+                new Point(0, 0, -60));
         triangle2.setEmission(new Color(244, 20, 95)).setMaterial(material);
 
         Triangle triangle3 = new Triangle(
@@ -55,9 +55,9 @@ class miniProjectTwo {
         triangle3.setEmission(new Color(244, 20, 132)).setMaterial(material);
 
         Triangle triangle4 = new Triangle(
-                new Point(100, 0, -63),
-                new Point(0, 100, -63),
-                new Point(100, 100, -63));
+                new Point(100, 0, -60),
+                new Point(0, 100, -60),
+                new Point(100, 100, -60));
         triangle4.setEmission(new Color(244, 20, 169)).setMaterial(material);
 
         Triangle triangle5 = new Triangle(
@@ -67,9 +67,9 @@ class miniProjectTwo {
         triangle5.setEmission(new Color(244, 20, 207)).setMaterial(material);
 
         Triangle triangle6 = new Triangle(
-                new Point(100,0,-63),
-                new Point(200,0,-63),
-                new Point(200,100,-63));
+                new Point(100,0,-60),
+                new Point(200,0,-60),
+                new Point(200,100,-60));
         triangle6.setEmission(new Color(244, 20, 41)).setMaterial(material);
 
         Triangle triangle7 = new Triangle(
@@ -79,15 +79,15 @@ class miniProjectTwo {
         triangle7.setEmission(new Color(244, 20, 244)).setMaterial(material);
 
         Triangle triangle8 = new Triangle(
-                new Point(-100,0,-63),
-                new Point(-200,100,-63),
-                new Point(-200,0,-63));
+                new Point(-100,0,-60),
+                new Point(-200,100,-60),
+                new Point(-200,0,-60));
         triangle8.setEmission(new Color(212, 20, 244)).setMaterial(material);
         // line 2
         Triangle triangle9 = new Triangle(
-                new Point(-100, -100, -63),
-                new Point(0, 0, -63),
-                new Point(-100, 0, -63));
+                new Point(-100, -100, -60),
+                new Point(0, 0, -60),
+                new Point(-100, 0, -60));
         triangle9.setEmission(new Color(175, 20, 244)).setMaterial(material);
 
         Triangle triangle10 = new Triangle(
@@ -97,9 +97,9 @@ class miniProjectTwo {
         triangle10.setEmission(new Color(137, 20, 244)).setMaterial(material);
 
         Triangle triangle11 = new Triangle(
-                new Point(100, -100, -63),
-                new Point(0, 0, -63),
-                new Point(0, -100, -63));
+                new Point(100, -100, -60),
+                new Point(0, 0, -60),
+                new Point(0, -100, -60));
         triangle11.setEmission(new Color(100, 20, 244)).setMaterial(material);
         Triangle triangle12 = new Triangle(
                 new Point(100, -100, -60),
@@ -108,9 +108,9 @@ class miniProjectTwo {
         triangle12.setEmission(new Color(63, 20, 244)).setMaterial(material);
 
         Triangle triangle13 = new Triangle(
-                new Point(100,-100,-63),
-                new Point(100,0,-63),
-                new Point(200,0,-63));
+                new Point(100,-100,-60),
+                new Point(100,0,-60),
+                new Point(200,0,-60));
         triangle13.setEmission(new Color(20, 20, 244)).setMaterial(material);
 
         Triangle triangle14 = new Triangle(
@@ -120,9 +120,9 @@ class miniProjectTwo {
         triangle14.setEmission(new Color(244, 20, 41)).setMaterial(material);
 
         Triangle triangle15 = new Triangle(
-                new Point(-200,0,-63),
-                new Point(-100,0,-63),
-                new Point(-100,-100,-63));
+                new Point(-200,0,-60),
+                new Point(-100,0,-60),
+                new Point(-100,-100,-60));
         triangle15.setEmission(new Color(20, 57, 244)).setMaterial(material);
 
         Triangle triangle16 = new Triangle(
@@ -138,9 +138,9 @@ class miniProjectTwo {
         triangle17.setEmission(new Color(20, 132, 244)).setMaterial(material);
 
         Triangle triangle18 = new Triangle(
-                new Point(-100, -200, -63),
-                new Point(0, -100, -63),
-                new Point(0, -200, -63));
+                new Point(-100, -200, -60),
+                new Point(0, -100, -60),
+                new Point(0, -200, -60));
         triangle18.setEmission(new Color(20, 169, 244)).setMaterial(material);
 
         Triangle triangle19 = new Triangle(
@@ -150,9 +150,9 @@ class miniProjectTwo {
         triangle19.setEmission(new Color(20, 207, 244)).setMaterial(material);
 
         Triangle triangle20 = new Triangle(
-                new Point(100, -200, -63),
-                new Point(0, -100, -63),
-                new Point(100, -100, -63));
+                new Point(100, -200, -60),
+                new Point(0, -100, -60),
+                new Point(100, -100, -60));
         triangle20.setEmission(new Color(20, 244, 244)).setMaterial(material);
 
         Triangle triangle21 = new Triangle(
@@ -162,9 +162,9 @@ class miniProjectTwo {
         triangle21.setEmission(new Color(20, 244, 212)).setMaterial(material);
 
         Triangle triangle22 = new Triangle(
-                new Point(100,-200,-63),
-                new Point(200,-200,-63),
-                new Point(200,-100,-63));
+                new Point(100,-200,-60),
+                new Point(200,-200,-60),
+                new Point(200,-100,-60));
         triangle22.setEmission(new Color(20, 244, 175)).setMaterial(material);
 
         Triangle triangle23 = new Triangle(
@@ -174,15 +174,15 @@ class miniProjectTwo {
         triangle23.setEmission(new Color(20, 244, 137)).setMaterial(material);
 
         Triangle triangle24 = new Triangle(
-                new Point(-100,-200,-63),
-                new Point(-200,-100,-63),
-                new Point(-200,-200,-63));
+                new Point(-100,-200,-60),
+                new Point(-200,-100,-60),
+                new Point(-200,-200,-60));
         triangle24.setEmission(new Color(20, 244, 100)).setMaterial(material);
         // line 4
         Triangle triangle25 = new Triangle(
-                new Point(-100, 100, -63),
-                new Point(0, 200, -63),
-                new Point(-100, 200, -63));
+                new Point(-100, 100, -60),
+                new Point(0, 200, -60),
+                new Point(-100, 200, -60));
         triangle25.setEmission(new Color(20, 244, 63)).setMaterial(material);
 
         Triangle triangle26 = new Triangle(
@@ -192,9 +192,9 @@ class miniProjectTwo {
         triangle26.setEmission(new Color(20, 244, 25)).setMaterial(material);
 
         Triangle triangle27 = new Triangle(
-                new Point(100, 100, -63),
-                new Point(0, 200, -63),
-                new Point(0, 100, -63));
+                new Point(100, 100, -60),
+                new Point(0, 200, -60),
+                new Point(0, 100, -60));
         triangle27.setEmission(new Color(52, 244, 20)).setMaterial(material);
 
         Triangle triangle28 = new Triangle(
@@ -204,9 +204,9 @@ class miniProjectTwo {
         triangle28.setEmission(new Color(89, 244, 20)).setMaterial(material);
 
         Triangle triangle29 = new Triangle(
-                new Point(100,100,-63),
-                new Point(100,200,-63),
-                new Point(200,200,-63));
+                new Point(100,100,-60),
+                new Point(100,200,-60),
+                new Point(200,200,-60));
         triangle29.setEmission(new Color(127, 244, 20)).setMaterial(material);
 
         Triangle triangle30 = new Triangle(
@@ -216,9 +216,9 @@ class miniProjectTwo {
         triangle30.setEmission(new Color(164, 244, 20)).setMaterial(material);
 
         Triangle triangle31 = new Triangle(
-                new Point(-200,200,-63),
-                new Point(-100,200,-63),
-                new Point(-100,100,-63));
+                new Point(-200,200,-60),
+                new Point(-100,200,-60),
+                new Point(-100,100,-60));
         triangle31.setEmission(new Color(201, 244, 20)).setMaterial(material);
 
         Triangle triangle32 = new Triangle(
@@ -239,11 +239,22 @@ class miniProjectTwo {
                 new Vector(0,1,-1)
         )
                 .setkL(0.001).setkQ(0.0002);
+        PointLight pointLight1 = (PointLight) new PointLight(
+                new Color(255, 255, 255),
+                new Point(0, 200, -60)
+        )
+                .setkL(0.001).setkQ(0.0002);
+        PointLight pointLight2 = (PointLight) new PointLight(
+                new Color(255, 255, 255),
+                new Point(200,0,-60)
+        )
+                .setkL(0.001).setkQ(0.0002);
+
         DirectionalLight directionalLight = new DirectionalLight(
                 new Color(180, 180, 180),
                 new Vector(0,-1,-1)
         );
-        List<LightSource> lights = List.of(spotLight1, spotLight2, directionalLight);
+        List<LightSource> lights = List.of(spotLight1, spotLight2, directionalLight, pointLight1, pointLight2);
         // build the scene
         scene.geometries.add(
                 // line 3
