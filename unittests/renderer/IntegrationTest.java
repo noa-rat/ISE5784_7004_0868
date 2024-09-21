@@ -33,9 +33,12 @@ class IntegrationTest {
     List<GeoPoint>result=new LinkedList<GeoPoint>();
     for (int i = 0; i < imageWriter.getNx() ;i++) {
         for (int j = 0; j < imageWriter.getNy() ; j++) {
-            var list = geometry.findGeoIntersections(camera.constructRay(imageWriter.getNx(), imageWriter.getNy(), j, i));
-            if (list != null) {
-                result.addAll(list);
+            List<Ray> rays = camera.constructRay(imageWriter.getNx(), imageWriter.getNy(), j, i, 1);
+            for (Ray ray : rays) {
+                var list = geometry.findGeoIntersections(ray);
+                if (list != null) {
+                    result.addAll(list);
+                }
             }
         }
     }

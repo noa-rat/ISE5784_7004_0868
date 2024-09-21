@@ -1,12 +1,14 @@
 package renderer;
 
-import lighting.LightSource;
-import lighting.PointLight;
+import lighting.*;
 import primitives.*;
 import scene.Scene;
 import geometries.Intersectable.GeoPoint;
+import renderer.Camera;
 
 import java.util.List;
+
+import static java.lang.Math.abs;
 
 /**
  * realizes the class RayTracerBase to track each ray
@@ -106,7 +108,7 @@ public class SimpleRayTracer extends RayTracerBase {
      * @return Double3 to the level of influence of Diffusive
      */
     private Double3 calcDiffusive(Double3 kD, double nl) {
-        return kD.scale(Math.abs(nl));
+        return kD.scale(abs(nl));
     }
 
     /**
@@ -212,6 +214,6 @@ public class SimpleRayTracer extends RayTracerBase {
         Vector r = v.subtract(n.scale(2 * vn));
         return new Ray(gp.point, r, n);
     }
+
+    // Adaptive Super-Sampling
 }
-
-
