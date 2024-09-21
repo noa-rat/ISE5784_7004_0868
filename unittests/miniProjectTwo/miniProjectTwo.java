@@ -57,7 +57,7 @@ class miniProjectTwo {
                 new Point(100, 0, -60),
                 new Point(0, 100, -60),
                 new Point(100, 100, -60));
-        triangle4.setEmission(new Color(244, 20, 169)).setMaterial(material);
+        triangle4.setEmission(new Color(45, 20, 169)).setMaterial(material);
 
         Triangle triangle5 = new Triangle(
                 new Point(100,0,-60),
@@ -134,49 +134,50 @@ class miniProjectTwo {
                 new Point(-100, -200, -60),
                 new Point(0, -100, -60),
                 new Point(-100, -100, -60));
-        triangle17.setEmission(new Color(20, 132, 244)).setMaterial(material);
+        triangle17.setEmission(new Color(255, 0, 0)).setMaterial(material); // אדום
 
         Triangle triangle18 = new Triangle(
                 new Point(-100, -200, -60),
                 new Point(0, -100, -60),
                 new Point(0, -200, -60));
-        triangle18.setEmission(new Color(20, 169, 244)).setMaterial(material);
+        triangle18.setEmission(new Color(0, 255, 0)).setMaterial(material); // ירוק
 
         Triangle triangle19 = new Triangle(
                 new Point(100, -200, -60),
                 new Point(0, -100, -60),
                 new Point(0, -200, -60));
-        triangle19.setEmission(new Color(20, 207, 244)).setMaterial(material);
+        triangle19.setEmission(new Color(0, 0, 255)).setMaterial(material); // כחול
 
         Triangle triangle20 = new Triangle(
                 new Point(100, -200, -60),
                 new Point(0, -100, -60),
                 new Point(100, -100, -60));
-        triangle20.setEmission(new Color(20, 244, 244)).setMaterial(material);
+        triangle20.setEmission(new Color(255, 255, 0)).setMaterial(material); // צהוב
 
         Triangle triangle21 = new Triangle(
-                new Point(100,-200,-60),
-                new Point(100,-100,-60),
-                new Point(200,-100,-60));
-        triangle21.setEmission(new Color(60, 244, 212)).setMaterial(material);
+                new Point(100, -200, -60),
+                new Point(100, -100, -60),
+                new Point(200, -100, -60));
+        triangle21.setEmission(new Color(255, 0, 255)).setMaterial(material); // מג'נטה
 
         Triangle triangle22 = new Triangle(
-                new Point(100,-200,-60),
-                new Point(200,-200,-60),
-                new Point(200,-100,-60));
-        triangle22.setEmission(new Color(100, 244, 175)).setMaterial(material);
+                new Point(100, -200, -60),
+                new Point(200, -200, -60),
+                new Point(200, -100, -60));
+        triangle22.setEmission(new Color(0, 255, 255)).setMaterial(material); // טורקיז
 
         Triangle triangle23 = new Triangle(
-                new Point(-200,-100,-60),
-                new Point(-100,-100,-60),
-                new Point(-100,-200,-60));
-        triangle23.setEmission(new Color(80, 200, 137)).setMaterial(material);
+                new Point(-200, -100, -60),
+                new Point(-100, -100, -60),
+                new Point(-100, -200, -60));
+        triangle23.setEmission(new Color(128, 0, 0)).setMaterial(material); // חום כהה
 
         Triangle triangle24 = new Triangle(
-                new Point(-100,-200,-60),
-                new Point(-200,-100,-60),
-                new Point(-200,-200,-60));
-        triangle24.setEmission(new Color(150, 180, 100)).setMaterial(material);
+                new Point(-100, -200, -60),
+                new Point(-200, -100, -60),
+                new Point(-200, -200, -60));
+        triangle24.setEmission(new Color(0, 128, 0)).setMaterial(material); // ירוק כהה
+
         // line 4
         Triangle triangle25 = new Triangle(
                 new Point(-100, 100, -60),
